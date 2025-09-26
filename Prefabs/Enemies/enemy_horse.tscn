@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://djj2p7rd1vlpl"]
+
+[ext_resource type="Script" uid="uid://d2ytu4ykl5yn1" path="res://Scripts/Enemy/Enemy_Horse.cs" id="1_q8jlw"]
+[ext_resource type="PhysicsMaterial" uid="uid://6lx4cki5depb" path="res://PhysicsMaterials/PhysMat_Player.tres" id="2_gsqgy"]
+[ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="3_hmead"]
+[ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_8f8y5"]
+[ext_resource type="Texture2D" uid="uid://bobwl0j5d6civ" path="res://Sprites/Enemies/Enemy_Horse.png" id="5_um02n"]
+[ext_resource type="Script" uid="uid://cqwhjddq36n6p" path="res://Scripts/Utility/CollisionChecker.cs" id="6_2iy3h"]
+[ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="7_jf51b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekaq6"]
+transparency = 1
+albedo_texture = ExtResource("5_um02n")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pnlkv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwh46"]
+transparency = 1
+albedo_texture = ExtResource("5_um02n")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bex7o"]
+size = Vector3(1.1291504, 0.9893799, 0.48046875)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1y7b8"]
+height = 0.5
+radius = 7.0
+
+[node name="Enemy_Horse" type="Node3D" node_paths=PackedStringArray("_playerCollisionCheck", "_playerCollisionCheck_Damage", "health", "_movement")]
+script = ExtResource("1_q8jlw")
+_playerCollisionCheck = NodePath("RigidBody3D/PlayerCheck_Area3D")
+_playerCollisionCheck_Damage = NodePath("RigidBody3D/PlayerCheck_Damage_Area3D")
+_baseMovementSpeed = 100.0
+_chargeTimeSet = 1.0
+_chargeEndTimeSet = 0.5
+health = NodePath("RigidBody3D/Horse_HP")
+_movement = NodePath("RigidBody3D")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = ExtResource("2_gsqgy")
+script = ExtResource("3_hmead")
+_moveSpeed = 55.0
+
+[node name="DirectionFlipper_Node3D" type="Node3D" parent="RigidBody3D" node_paths=PackedStringArray("_movement")]
+script = ExtResource("4_8f8y5")
+_movement = NodePath("..")
+
+[node name="Forward_MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/DirectionFlipper_Node3D"]
+transform = Transform3D(1.325, 0, 2.0006945e-07, 0, 1.325, 0, 2.0006945e-07, 0, -1.325, 0, 0.5332036, 0)
+material_override = SubResource("StandardMaterial3D_ekaq6")
+mesh = SubResource("QuadMesh_pnlkv")
+
+[node name="Back_MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/DirectionFlipper_Node3D"]
+transform = Transform3D(1.325, 0, 0, 0, 1.325, -1.15835185e-07, 0, 1.15835185e-07, 1.325, 0, 0.5332036, 0)
+material_override = SubResource("StandardMaterial3D_vwh46")
+mesh = SubResource("QuadMesh_pnlkv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152282715, 0.49273682, 0)
+shape = SubResource("BoxShape3D_bex7o")
+
+[node name="PlayerCheck_Area3D" type="Area3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2701416, 0)
+script = ExtResource("6_2iy3h")
+_targetLayer = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/PlayerCheck_Area3D"]
+shape = SubResource("CylinderShape3D_1y7b8")
+
+[node name="PlayerCheck_Damage_Area3D" type="Area3D" parent="RigidBody3D"]
+script = ExtResource("6_2iy3h")
+_targetLayer = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/PlayerCheck_Damage_Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152282715, 0.49273682, 0)
+shape = SubResource("BoxShape3D_bex7o")
+
+[node name="Horse_HP" type="Node" parent="RigidBody3D"]
+script = ExtResource("7_jf51b")
+_startingHP = 10

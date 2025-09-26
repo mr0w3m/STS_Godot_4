@@ -1,0 +1,506 @@
+[gd_scene load_steps=40 format=3 uid="uid://peuc1l04bpqn"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dybft1q4bhtnl" path="res://PhysicsMaterials/PhysMat_Ground.tres" id="1_4pjek"]
+[ext_resource type="Script" uid="uid://ltx1plrrwijj" path="res://Scripts/Player/PlayerNode.cs" id="1_i8b7g"]
+[ext_resource type="Texture2D" uid="uid://nspqx14trs33" path="res://Sprites/TempSprites/Circle_32.png" id="3_4pjek"]
+[ext_resource type="PhysicsMaterial" uid="uid://6lx4cki5depb" path="res://PhysicsMaterials/PhysMat_Player.tres" id="3_wowvs"]
+[ext_resource type="Texture2D" uid="uid://dsbdb6j2il41f" path="res://Sprites/Player/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png" id="4_i1ubu"]
+[ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_io3br"]
+[ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="4_ngt0p"]
+[ext_resource type="Texture2D" uid="uid://ei6ekc1wowq5" path="res://Sprites/TempSprites/TreeTemp.png" id="4_wowvs"]
+[ext_resource type="Texture2D" uid="uid://ba4rt1hpevcue" path="res://Sprites/TempSprites/TempHouse.png" id="5_i1ubu"]
+[ext_resource type="Script" uid="uid://cvdsbfo0bcw80" path="res://Scripts/Player/Stars.cs" id="8_ngt0p"]
+[ext_resource type="Texture2D" uid="uid://jkir0f7r11rf" path="res://Sprites/StarFriends/StarBoi.png" id="8_x6d61"]
+[ext_resource type="PackedScene" uid="uid://cjbptn61pwa6x" path="res://Prefabs/Projectiles/Stars/StarProjectile_Rigidbody3D.tscn" id="10_ixgti"]
+[ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="11_irfb3"]
+[ext_resource type="Texture2D" uid="uid://c01m3k1uyaenb" path="res://Sprites/Environment/bush n tree/Bush_01.png" id="14_n75rc"]
+[ext_resource type="Texture2D" uid="uid://cwjmd3s0xk5yx" path="res://Sprites/Environment/bush n tree/Bush_02.png" id="15_i60v8"]
+[ext_resource type="Texture2D" uid="uid://b3pyl4xcx03mk" path="res://Sprites/Environment/bush n tree/Tree_01.png" id="16_bex7o"]
+[ext_resource type="PackedScene" uid="uid://djj2p7rd1vlpl" path="res://Prefabs/Enemies/enemy_horse.tscn" id="17_efl1x"]
+[ext_resource type="Script" uid="uid://dmjhtduryblmc" path="res://Scripts/UI/UI_Health.cs" id="24_08i0l"]
+[ext_resource type="PackedScene" uid="uid://cqhgipwu12yiq" path="res://Prefabs/UI/Health/ui_hp_texture_rect_prefab.tscn" id="25_2c5j8"]
+[ext_resource type="Script" uid="uid://c22sl6uxuh6mw" path="res://Scripts/UI/PlayerDeathUI.cs" id="26_2c5j8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_io3br"]
+albedo_color = Color(0.2519387, 0.29258174, 0.08889959, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ngt0p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8b7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixgti"]
+transparency = 1
+albedo_texture = ExtResource("4_i1ubu")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_irfb3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6d61"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("3_4pjek")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8b7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngt0p"]
+transparency = 1
+albedo_texture = ExtResource("8_x6d61")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ixgti"]
+material = SubResource("StandardMaterial3D_ngt0p")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dnyai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2f7qp"]
+transparency = 1
+albedo_texture = ExtResource("4_wowvs")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_e2oi3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n75rc"]
+transparency = 1
+albedo_texture = ExtResource("5_i1ubu")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pnlkv"]
+size = Vector3(26.987305, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i60v8"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("14_n75rc")
+
+[sub_resource type="QuadMesh" id="QuadMesh_efl1x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2lpm4"]
+size = Vector3(1, 0.75042725, 0.38891602)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efl1x"]
+transparency = 1
+albedo_texture = ExtResource("15_i60v8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnlkv"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("16_bex7o")
+
+[node name="NewScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5924492, 0.80560786, 0, -0.80560786, -0.5924492, 0.0016281605, 5.7484245, -3.5928655)
+
+[node name="Ground_StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, -0.5, 0)
+physics_material_override = ExtResource("1_4pjek")
+
+[node name="Ground" type="MeshInstance3D" parent="Ground_StaticBody3D"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_io3br")
+mesh = SubResource("BoxMesh_ngt0p")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_StaticBody3D"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_i8b7g")
+
+[node name="PlayerNode" type="Node" parent="." node_paths=PackedStringArray("movement", "stars")]
+script = ExtResource("1_i8b7g")
+movement = NodePath("Player_RigidBody3D")
+stars = NodePath("Player_RigidBody3D/PlayerStars")
+
+[node name="Player_RigidBody3D" type="RigidBody3D" parent="PlayerNode" groups=["Player"]]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = ExtResource("3_wowvs")
+script = ExtResource("4_ngt0p")
+_moveSpeed = 200.0
+
+[node name="SpriteParentAndDirectionFlipper" type="Node3D" parent="PlayerNode/Player_RigidBody3D" node_paths=PackedStringArray("_movement")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("4_io3br")
+_movement = NodePath("..")
+
+[node name="PlayerFront" type="MeshInstance3D" parent="PlayerNode/Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
+transform = Transform3D(-2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0016283989, 0.623, 0.0020656586)
+material_override = SubResource("StandardMaterial3D_ixgti")
+mesh = SubResource("QuadMesh_irfb3")
+skeleton = NodePath("../../../..")
+
+[node name="PlayerBack" type="MeshInstance3D" parent="PlayerNode/Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0.0016283989, 0.623, 0.0020656586)
+material_override = SubResource("StandardMaterial3D_ixgti")
+mesh = SubResource("QuadMesh_irfb3")
+skeleton = NodePath("../../../..")
+
+[node name="PlayerGroundSprite" type="MeshInstance3D" parent="PlayerNode/Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
+transform = Transform3D(0.44729495, 0, 0, 0, -1.0406814e-08, 1, 0, -0.23808017, -4.371139e-08, 0.0016283989, 0.0032370687, 0.0020656586)
+material_override = SubResource("StandardMaterial3D_x6d61")
+mesh = SubResource("QuadMesh_irfb3")
+skeleton = NodePath("../../../..")
+
+[node name="ProjectileSpawnTransform_Node3D" type="Node3D" parent="PlayerNode/Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
+transform = Transform3D(-4.371139e-08, -0.7071067, -0.7071067, 0, 0.7071067, -0.7071067, 1, -3.0908616e-08, -3.0908616e-08, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerNode/Player_RigidBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0016283989, 0.49999994, 0.0020656586)
+shape = SubResource("CapsuleShape3D_i8b7g")
+debug_color = Color(0.85882354, 0.3254902, 0.42745098, 0.94509804)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerNode/Player_RigidBody3D"]
+transform = Transform3D(-1, -1.267697e-09, 9.218413e-08, 2.2492536e-08, 0.96633565, 0.25728458, -8.9406974e-08, 0.25728458, -0.96633565, 0.0016284585, 1.7992702, -1.7968271)
+fov = 101.24999
+
+[node name="SpringArm3D" type="SpringArm3D" parent="PlayerNode/Player_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.96633565, -0.25728458, 0, 0.25728458, 0.96633565, 0, 0.545, 0)
+visible = false
+spring_length = -2.059
+
+[node name="StarFriendParent" type="Node3D" parent="PlayerNode/Player_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5235833, 0.81331253, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerNode/Player_RigidBody3D/StarFriendParent"]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.18148436, 0.5103493, 0.29154745)
+mesh = SubResource("QuadMesh_ixgti")
+
+[node name="PlayerStars" type="Node3D" parent="PlayerNode/Player_RigidBody3D" node_paths=PackedStringArray("_projectileLaunchPos")]
+script = ExtResource("8_ngt0p")
+_projectileLaunchPos = NodePath("../SpriteParentAndDirectionFlipper/ProjectileSpawnTransform_Node3D")
+_starProjectilePrefab = ExtResource("10_ixgti")
+
+[node name="PlayerHP" type="Node" parent="PlayerNode/Player_RigidBody3D"]
+script = ExtResource("11_irfb3")
+_startingHP = 5
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Tree" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-3, 0, 4.5298742e-07, 0, 3, 0, -4.5298742e-07, 0, -3, 1.5736284, 1.5, 1.3090657)
+mesh = SubResource("QuadMesh_dnyai")
+surface_material_override/0 = SubResource("StandardMaterial3D_2f7qp")
+
+[node name="Tree2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-3, 0, 4.5298742e-07, 0, 3, 0, -4.5298742e-07, 0, -3, -2.4263716, 1.5, 1.3090657)
+mesh = SubResource("QuadMesh_dnyai")
+surface_material_override/0 = SubResource("StandardMaterial3D_2f7qp")
+
+[node name="Tree3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-3, 0, 4.5298742e-07, 0, 3, 0, -4.5298742e-07, 0, -3, -3.4263716, 1.5, 5.309066)
+mesh = SubResource("QuadMesh_dnyai")
+surface_material_override/0 = SubResource("StandardMaterial3D_2f7qp")
+
+[node name="Tree4" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-3, 0, 4.5298742e-07, 0, 3, 0, -4.5298742e-07, 0, -3, 2.5736284, 1.5, 5.309066)
+mesh = SubResource("QuadMesh_dnyai")
+surface_material_override/0 = SubResource("StandardMaterial3D_2f7qp")
+
+[node name="House" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-5, 0, -1.509958e-07, 0, 3, 0, 7.54979e-07, 0, -1, -0.7782999, 1.4787948, 3.6510386)
+mesh = SubResource("QuadMesh_e2oi3")
+surface_material_override/0 = SubResource("StandardMaterial3D_n75rc")
+
+[node name="FrontWall_StaticBody3D" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/FrontWall_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74658203, 0)
+shape = SubResource("BoxShape3D_pnlkv")
+
+[node name="BackWall_StaticBody3D" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/BackWall_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74658203, 0)
+shape = SubResource("BoxShape3D_pnlkv")
+
+[node name="Bushes" type="Node" parent="Environment"]
+
+[node name="Bush_001_StaticBody3D" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.1587956, 0, 3.269261)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_001_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48194838, 0)
+material_override = SubResource("StandardMaterial3D_i60v8")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_001_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_001_StaticBody3D2" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.6714287, 0, 3.209671)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_001_StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48194838, 0)
+material_override = SubResource("StandardMaterial3D_i60v8")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_001_StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_002_StaticBody3D" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.99525964, 0, -0.097252995, 0, 1, 0, 0.097252995, 0, -0.99525964, 3.9509916, 0, 3.3390846)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_002_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4819486, 0)
+material_override = SubResource("StandardMaterial3D_efl1x")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_002_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_002_StaticBody3D2" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.99525964, 0, -0.097252995, 0, 1, 0, 0.097252995, 0, -0.99525964, 2.494398, 4.7683716e-07, 3.5939536)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_002_StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4819486, 0)
+material_override = SubResource("StandardMaterial3D_efl1x")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_002_StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_001_StaticBody3D3" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.1587956, 0, -0.9087441)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_001_StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48194838, 0)
+material_override = SubResource("StandardMaterial3D_i60v8")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_001_StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_001_StaticBody3D4" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.6714287, 0, -0.96833396)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_001_StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48194838, 0)
+material_override = SubResource("StandardMaterial3D_i60v8")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_001_StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_002_StaticBody3D3" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.99525964, 0, -0.09725299, 0, 1, 0, 0.09725299, 0, -0.99525964, 3.9509916, 0, -0.83892035)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_002_StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4819486, 0)
+material_override = SubResource("StandardMaterial3D_efl1x")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_002_StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_002_StaticBody3D4" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.99525964, 0, -0.09725299, 0, 1, 0, 0.09725299, 0, -0.99525964, 2.494398, 4.7683716e-07, -0.5840514)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_002_StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4819486, 0)
+material_override = SubResource("StandardMaterial3D_efl1x")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_002_StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_001_StaticBody3D5" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.9842049, 0, 0.17703313, 0, 1, 0, -0.17703313, 0, -0.9842049, 0.1800966, 0, -0.98002434)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_001_StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48194838, 0)
+material_override = SubResource("StandardMaterial3D_i60v8")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_001_StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_001_StaticBody3D6" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.9842049, 0, 0.17703313, 0, 1, 0, -0.17703313, 0, -0.9842049, 1.6793869, 0, -0.77088666)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_001_StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48194838, 0)
+material_override = SubResource("StandardMaterial3D_i60v8")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_001_StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_002_StaticBody3D5" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.9967564, 0, 0.08047715, 0, 1, 0, -0.08047715, 0, -0.9967564, 0.9474187, 0, -0.7710583)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_002_StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4819486, 0)
+material_override = SubResource("StandardMaterial3D_efl1x")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_002_StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_002_StaticBody3D6" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.9967564, 0, 0.08047715, 0, 1, 0, -0.08047715, 0, -0.9967564, -0.53128797, 4.7683716e-07, -0.77808046)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_002_StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4819486, 0)
+material_override = SubResource("StandardMaterial3D_efl1x")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_002_StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_001_StaticBody3D7" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.9902608, 0, 0.13922487, 0, 1, 0, -0.13922487, 0, -0.9902608, -3.8255527, 0, -0.9650259)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_001_StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48194838, 0)
+material_override = SubResource("StandardMaterial3D_i60v8")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_001_StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_001_StaticBody3D8" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.9902608, 0, 0.13922487, 0, 1, 0, -0.13922487, 0, -0.9902608, -2.319355, 0, -0.81343913)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_001_StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48194838, 0)
+material_override = SubResource("StandardMaterial3D_i60v8")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_001_StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_002_StaticBody3D7" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.9991066, 0, 0.042259164, 0, 1, 0, -0.042259164, 0, -0.9991066, -3.0507932, 0, -0.78558874)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_002_StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4819486, 0)
+material_override = SubResource("StandardMaterial3D_efl1x")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_002_StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Bush_002_StaticBody3D8" type="StaticBody3D" parent="Environment/Bushes"]
+transform = Transform3D(-0.9991066, 0, 0.042259164, 0, 1, 0, -0.042259164, 0, -0.9991066, -4.5286846, 4.7683716e-07, -0.735996)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Bushes/Bush_002_StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4819486, 0)
+material_override = SubResource("StandardMaterial3D_efl1x")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bushes/Bush_002_StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Trees" type="Node" parent="Environment"]
+
+[node name="Tree_001_StaticBody3D" type="StaticBody3D" parent="Environment/Trees"]
+transform = Transform3D(-0.9991066, 0, 0.042259164, 0, 1, 0, -0.042259164, 0, -0.9991066, -5.938108, 4.7683716e-07, -1.0478854)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Trees/Tree_001_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7703028, 0.5386083, -0.03258145)
+material_override = SubResource("StandardMaterial3D_pnlkv")
+mesh = SubResource("QuadMesh_efl1x")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Trees/Tree_001_StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37368774, 0)
+shape = SubResource("BoxShape3D_2lpm4")
+
+[node name="Sprite3D" type="Sprite3D" parent="Environment/Trees/Tree_001_StaticBody3D"]
+transform = Transform3D(0.050000004, 0, 0, 0, 0.05, 0, 0, 0, 0.050000004, 0, 0.8390806, 0)
+texture = ExtResource("16_bex7o")
+
+[node name="Enemy_Horse" parent="." instance=ExtResource("17_efl1x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.778723, 0, 2.0482054)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" node_paths=PackedStringArray("_health")]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("24_08i0l")
+_health = NodePath("../../../PlayerNode/Player_RigidBody3D/PlayerHP")
+_uiHPPrefab = ExtResource("25_2c5j8")
+
+[node name="YouDied_Control" type="Control" parent="CanvasLayer/Control" node_paths=PackedStringArray("_health")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("26_2c5j8")
+_health = NodePath("../../../PlayerNode/Player_RigidBody3D/PlayerHP")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/YouDied_Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/YouDied_Control"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -86.69501
+offset_right = 248.0
+offset_bottom = 86.69501
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 72
+text = "You Died"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

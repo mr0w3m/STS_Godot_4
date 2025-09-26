@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://mbh31xxwq62u"]
+
+[ext_resource type="Script" uid="uid://djsvxibseyheh" path="res://Scripts/Enemy/Enemy_Imp.cs" id="1_fg555"]
+[ext_resource type="PhysicsMaterial" uid="uid://6lx4cki5depb" path="res://PhysicsMaterials/PhysMat_Player.tres" id="2_ed7hf"]
+[ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="3_ehdsf"]
+[ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_cbl7f"]
+[ext_resource type="Texture2D" uid="uid://blf2ybmj8fc42" path="res://Sprites/Enemies/PileEnemy_Single.png" id="5_dp6mi"]
+[ext_resource type="Script" uid="uid://cqwhjddq36n6p" path="res://Scripts/Utility/CollisionChecker.cs" id="6_hsx4g"]
+[ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="7_ifjlp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekaq6"]
+transparency = 1
+albedo_texture = ExtResource("5_dp6mi")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pnlkv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwh46"]
+transparency = 1
+albedo_texture = ExtResource("5_dp6mi")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bex7o"]
+size = Vector3(0.4248047, 0.73046875, 0.23535156)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u70w4"]
+height = 0.5
+radius = 3.0
+
+[node name="Enemy_PileSingle" type="Node3D" node_paths=PackedStringArray("_playerCheck", "health", "_movement")]
+script = ExtResource("1_fg555")
+_playerCheck = NodePath("Movement_RigidBody3D/PlayerCheck_Area3D")
+_attackDamage = 1
+_timeBetweenAttacks = 2.0
+health = NodePath("Movement_RigidBody3D/PileSingle_HP")
+_movement = NodePath("Movement_RigidBody3D")
+
+[node name="Movement_RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.278896, 0, -0.56312513)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = ExtResource("2_ed7hf")
+script = ExtResource("3_ehdsf")
+_moveSpeed = 60.0
+
+[node name="DirectionFlipper_Node3D" type="Node3D" parent="Movement_RigidBody3D" node_paths=PackedStringArray("_movement")]
+script = ExtResource("4_cbl7f")
+_movement = NodePath("..")
+
+[node name="Forward_MeshInstance3D" type="MeshInstance3D" parent="Movement_RigidBody3D/DirectionFlipper_Node3D"]
+transform = Transform3D(1, 0, 1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.37983727, 0)
+material_override = SubResource("StandardMaterial3D_ekaq6")
+mesh = SubResource("QuadMesh_pnlkv")
+
+[node name="Back_MeshInstance3D" type="MeshInstance3D" parent="Movement_RigidBody3D/DirectionFlipper_Node3D"]
+transform = Transform3D(1, -8.742276e-08, 1.509958e-07, 8.742278e-08, 1, -8.742278e-08, -1.5099579e-07, 8.742279e-08, 1, 0, 0.37983727, 0)
+material_override = SubResource("StandardMaterial3D_vwh46")
+mesh = SubResource("QuadMesh_pnlkv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36328125, 0)
+shape = SubResource("BoxShape3D_bex7o")
+
+[node name="PlayerCheck_Area3D" type="Area3D" parent="Movement_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2701416, 0)
+script = ExtResource("6_hsx4g")
+_targetLayer = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement_RigidBody3D/PlayerCheck_Area3D"]
+shape = SubResource("CylinderShape3D_u70w4")
+
+[node name="PileSingle_HP" type="Node" parent="Movement_RigidBody3D"]
+script = ExtResource("7_ifjlp")
+_startingHP = 2

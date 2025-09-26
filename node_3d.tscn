@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv0q1kh34gr15"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xowi"]
+albedo_color = Color(0.25490198, 0.59607846, 0.39215687, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a202f"]
+material = SubResource("StandardMaterial3D_4xowi")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_noarx"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_a0tk4"]
+script/source = "using Godot;
+using System;
+
+public partial class Actor : MeshInstance3D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_a202f")
+
+[node name="Player" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("CapsuleMesh_noarx")
+script = SubResource("CSharpScript_a0tk4")
