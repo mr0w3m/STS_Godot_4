@@ -34,13 +34,12 @@ health = NodePath("Movement_RigidBody3D/PileSingle_HP")
 _movement = NodePath("Movement_RigidBody3D")
 
 [node name="Movement_RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.278896, 0, -0.56312513)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 physics_material_override = ExtResource("2_ed7hf")
 script = ExtResource("3_ehdsf")
-_moveSpeed = 60.0
+_moveSpeed = 100.0
 
 [node name="DirectionFlipper_Node3D" type="Node3D" parent="Movement_RigidBody3D" node_paths=PackedStringArray("_movement")]
 script = ExtResource("4_cbl7f")
@@ -70,4 +69,4 @@ shape = SubResource("CylinderShape3D_u70w4")
 
 [node name="PileSingle_HP" type="Node" parent="Movement_RigidBody3D"]
 script = ExtResource("7_ifjlp")
-_startingHP = 2
+_startingHP = 1

@@ -24,13 +24,13 @@ radius = 3.0
 [node name="Enemy_Imp" type="Node3D" node_paths=PackedStringArray("_playerCheck", "health", "_movement")]
 script = ExtResource("1_4bgo7")
 _playerCheck = NodePath("RigidBody3D/PlayerCheck_CollisionShape3D")
+_attackRange = 0.75
 _attackDamage = 1
-_timeBetweenAttacks = 2.0
+_timeBetweenAttacks = 0.5
 health = NodePath("RigidBody3D/Imp_HP")
 _movement = NodePath("RigidBody3D")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.470109, 0, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

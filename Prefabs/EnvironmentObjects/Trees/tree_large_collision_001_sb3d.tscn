@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://k3q4rpev020h"]
+
+[ext_resource type="Texture2D" uid="uid://b3pyl4xcx03mk" path="res://Sprites/Environment/bush n tree/Tree_01.png" id="1_56wvw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_me1md"]
+size = Vector3(0.4300537, 2.0614624, 0.2705078)
+
+[node name="Tree_Large_Collision_001_SB3D" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6839734, 0)
+pixel_size = 0.001
+texture = ExtResource("1_56wvw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055847168, 1.0273132, 0)
+shape = SubResource("BoxShape3D_me1md")
