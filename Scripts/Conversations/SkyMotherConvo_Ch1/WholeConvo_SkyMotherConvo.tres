@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WholeConversationData" load_steps=3 format=3 uid="uid://dka7agl1iwqm7"]
+
+[ext_resource type="Script" uid="uid://dijxo2nlm6ya2" path="res://Scripts/Conversations/ConvoData.gd" id="1_81g62"]
+[ext_resource type="Script" uid="uid://bo73mju60svnp" path="res://Scripts/Conversations/WholeConversationData.gd" id="2_gg1q7"]
+
+[resource]
+script = ExtResource("2_gg1q7")
+lines = Array[ExtResource("1_81g62")]([null])

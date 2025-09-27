@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3 uid="uid://jsakia11h3ue"]
+
+[ext_resource type="Script" uid="uid://by2x0gcoto3ii" path="res://Scripts/Conversations/CharacterData.cs" id="1_wur48"]
+
+[resource]
+script = ExtResource("1_wur48")

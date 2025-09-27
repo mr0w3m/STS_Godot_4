@@ -1,0 +1,27 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://crcb8l4oq4iut"]
+
+[ext_resource type="Texture2D" uid="uid://dsbdb6j2il41f" path="res://Sprites/Player/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png" id="1_aaf4h"]
+[ext_resource type="Texture2D" uid="uid://dx2fhkh7hpcqr" path="res://Sprites/Player/STS_Sprite_PlayerCharacter_BigEyes_WalkRight.png" id="2_v1ng8"]
+
+[resource]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aaf4h")
+}],
+"loop": true,
+"name": &"IdleAnim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aaf4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v1ng8")
+}],
+"loop": true,
+"name": &"WalkAnim",
+"speed": 5.0
+}]

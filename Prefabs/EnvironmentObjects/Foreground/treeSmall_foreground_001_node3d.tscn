@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://djd2w7lmw17bw"]
+
+[ext_resource type="Texture2D" uid="uid://b3pyl4xcx03mk" path="res://Sprites/Environment/bush n tree/Tree_01.png" id="1_3w7ci"]
+
+[node name="TreeSmall_Foreground_001_Node3D" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.9991067, 0, 0.042259175, 0, 1, 0, -0.042259175, 0, -0.9991067, 0, 0.839, 0)
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+pixel_size = 0.0005
+texture = ExtResource("1_3w7ci")

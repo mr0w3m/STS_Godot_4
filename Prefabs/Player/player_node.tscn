@@ -1,0 +1,221 @@
+[gd_scene load_steps=20 format=3 uid="uid://qj8prtnly8lf"]
+
+[ext_resource type="Script" uid="uid://ltx1plrrwijj" path="res://Scripts/Player/PlayerNode.cs" id="1_ydqg4"]
+[ext_resource type="PhysicsMaterial" uid="uid://6lx4cki5depb" path="res://PhysicsMaterials/PhysMat_Player.tres" id="2_cqeso"]
+[ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="3_0jkn5"]
+[ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_yi70h"]
+[ext_resource type="SpriteFrames" uid="uid://crcb8l4oq4iut" path="res://Animations/Player/PlayerAnimator_SpriteFrames.tres" id="5_cqeso"]
+[ext_resource type="Script" uid="uid://ba52jyollp3b6" path="res://Scripts/Other/AnimController.cs" id="6_0jkn5"]
+[ext_resource type="Texture2D" uid="uid://nspqx14trs33" path="res://Sprites/TempSprites/Circle_32.png" id="6_vc4si"]
+[ext_resource type="Texture2D" uid="uid://jkir0f7r11rf" path="res://Sprites/StarFriends/StarBoi.png" id="7_l6di8"]
+[ext_resource type="Script" uid="uid://cvdsbfo0bcw80" path="res://Scripts/Player/Stars.cs" id="8_kjmbk"]
+[ext_resource type="PackedScene" uid="uid://cjbptn61pwa6x" path="res://Prefabs/Projectiles/Stars/StarProjectile_Rigidbody3D.tscn" id="9_a2cyr"]
+[ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="10_c2ywu"]
+[ext_resource type="Script" uid="uid://dmjhtduryblmc" path="res://Scripts/UI/UI_Health.cs" id="11_yi70h"]
+[ext_resource type="PackedScene" uid="uid://cqhgipwu12yiq" path="res://Prefabs/UI/Health/ui_hp_texture_rect_prefab.tscn" id="12_7kaws"]
+[ext_resource type="Script" uid="uid://c22sl6uxuh6mw" path="res://Scripts/UI/PlayerDeathUI.cs" id="13_vc4si"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6d61"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("6_vc4si")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_irfb3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8b7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngt0p"]
+transparency = 1
+albedo_texture = ExtResource("7_l6di8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ixgti"]
+material = SubResource("StandardMaterial3D_ngt0p")
+
+[node name="PlayerNode" type="Node3D" node_paths=PackedStringArray("movement", "stars", "animController")]
+script = ExtResource("1_ydqg4")
+movement = NodePath("Player_RigidBody3D")
+stars = NodePath("Player_RigidBody3D/PlayerStars")
+animController = NodePath("Player_RigidBody3D/SpriteParentAndDirectionFlipper/PrimaryAnimatedSprite3D")
+
+[node name="Player_RigidBody3D" type="RigidBody3D" parent="." groups=["Player"]]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = ExtResource("2_cqeso")
+script = ExtResource("3_0jkn5")
+_moveSpeed = 200.0
+
+[node name="SpriteParentAndDirectionFlipper" type="Node3D" parent="Player_RigidBody3D" node_paths=PackedStringArray("_movement")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("4_yi70h")
+_movement = NodePath("..")
+
+[node name="PrimaryAnimatedSprite3D" type="AnimatedSprite3D" parent="Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
+transform = Transform3D(-0.9999997, 0, -2.980232e-08, 0, 1, 0, 2.980232e-08, 0, -0.9999997, 0, 0.651, 0)
+pixel_size = 0.0005
+sprite_frames = ExtResource("5_cqeso")
+animation = &"WalkAnim"
+autoplay = "IdleAnim"
+frame = 1
+frame_progress = 0.20468305
+script = ExtResource("6_0jkn5")
+
+[node name="PlayerGroundSprite" type="MeshInstance3D" parent="Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
+transform = Transform3D(0.9452462, 0, 0, 0, -1.800432e-08, 0.9999995, 0, -0.41189086, -4.3711367e-08, -0.13179512, 0.0032370687, 0.0020656586)
+material_override = SubResource("StandardMaterial3D_x6d61")
+mesh = SubResource("QuadMesh_irfb3")
+skeleton = NodePath("../../../..")
+
+[node name="ProjectileSpawnTransform_Node3D" type="Node3D" parent="Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
+transform = Transform3D(-4.371139e-08, -0.7071067, -0.7071067, 0, 0.7071067, -0.7071067, 1, -3.0908616e-08, -3.0908616e-08, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player_RigidBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0016283989, 0.49999994, 0.0020656586)
+shape = SubResource("CapsuleShape3D_i8b7g")
+debug_color = Color(0.85882354, 0.3254902, 0.42745098, 0.94509804)
+
+[node name="CameraYaw" type="Node3D" parent="Player_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72543514, 0)
+
+[node name="CameraPitch" type="Node3D" parent="Player_RigidBody3D/CameraYaw"]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0)
+
+[node name="CameraRoll" type="Node3D" parent="Player_RigidBody3D/CameraYaw/CameraPitch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
+
+[node name="Camera3D" type="Camera3D" parent="Player_RigidBody3D/CameraYaw/CameraPitch/CameraRoll"]
+transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1.0000001, 0, 8.742278e-08, 0, -1.0000001, 0, 0, 0)
+fov = 60.0
+
+[node name="StarFriendParent" type="Node3D" parent="Player_RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5235833, 0.81331253, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player_RigidBody3D/StarFriendParent"]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0.18148436, 0.5103493, 0.29154745)
+mesh = SubResource("QuadMesh_ixgti")
+
+[node name="PlayerStars" type="Node3D" parent="Player_RigidBody3D" node_paths=PackedStringArray("_projectileLaunchPos")]
+script = ExtResource("8_kjmbk")
+_projectileLaunchPos = NodePath("../SpriteParentAndDirectionFlipper/ProjectileSpawnTransform_Node3D")
+_starProjectilePrefab = ExtResource("9_a2cyr")
+
+[node name="PlayerHP" type="Node" parent="Player_RigidBody3D"]
+script = ExtResource("10_c2ywu")
+_startingHP = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIHP_Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UIHP_Control" node_paths=PackedStringArray("_health")]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_yi70h")
+_health = NodePath("../../../Player_RigidBody3D/PlayerHP")
+_uiHPPrefab = ExtResource("12_7kaws")
+
+[node name="UIDeathText_Control2" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("_health")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_vc4si")
+_health = NodePath("../../Player_RigidBody3D/PlayerHP")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/UIDeathText_Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UIDeathText_Control2"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -100.0
+offset_right = 274.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 72
+text = "You Died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Conversation_Control3" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Conversation_Control3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -437.0
+offset_top = -151.0
+offset_right = 437.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Conversation_Control3/Panel"]
+layout_mode = 1
+offset_top = -69.0
+offset_right = 300.0
+offset_bottom = -19.0
+
+[node name="Speaker_RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Conversation_Control3/Panel/Panel2"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+text = "Sky Mother"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Words_RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Conversation_Control3/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_right = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "Here's some text for conversation. It's important to be able to read this from afar."
+vertical_alignment = 1

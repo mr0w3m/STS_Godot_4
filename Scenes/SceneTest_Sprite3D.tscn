@@ -1,3 +1,51 @@
-[gd_scene format=3 uid="uid://c5ah85xtedh8p"]
+[gd_scene load_steps=10 format=3 uid="uid://c5ah85xtedh8p"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dybft1q4bhtnl" path="res://PhysicsMaterials/PhysMat_Ground.tres" id="1_0h07c"]
+[ext_resource type="Shader" uid="uid://dr4y14yocycf5" path="res://Shaders/Triplanar.gdshader" id="1_v2rm0"]
+[ext_resource type="Texture2D" uid="uid://dr6jy6ge82elp" path="res://Sprites/Environment/Grass/grass.png" id="2_8n6h1"]
+[ext_resource type="PackedScene" uid="uid://qj8prtnly8lf" path="res://Prefabs/Player/player_node.tscn" id="3_h518t"]
+[ext_resource type="Texture2D" uid="uid://b3pyl4xcx03mk" path="res://Sprites/Environment/bush n tree/Tree_01.png" id="14_6gxqc"]
+[ext_resource type="Texture2D" uid="uid://c01m3k1uyaenb" path="res://Sprites/Environment/bush n tree/Bush_01.png" id="15_0h07c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8n6h1"]
+render_priority = 0
+shader = ExtResource("1_v2rm0")
+shader_parameter/albedo_texture = ExtResource("2_8n6h1")
+shader_parameter/scale = 1.0
+shader_parameter/blend_sharpness = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_6gxqc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xij3u"]
 
 [node name="SceneTestSprite3d" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = ExtResource("1_0h07c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(12.586832, 0, 0, 0, 1, 0, 0, 0, 10.506318, 0, -0.5, 0)
+material_override = SubResource("ShaderMaterial_8n6h1")
+mesh = SubResource("BoxMesh_6gxqc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(12.586832, 0, 0, 0, 1, 0, 0, 0, 10.506318, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_xij3u")
+
+[node name="PlayerNode" parent="." instance=ExtResource("3_h518t")]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.832088, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8355887, 0)
+pixel_size = 0.0005
+texture = ExtResource("14_6gxqc")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.167912, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3260045, 0)
+pixel_size = 0.0005
+texture = ExtResource("15_0h07c")

@@ -2,10 +2,12 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public partial class PlayerNode : Node
+public partial class PlayerNode : Node3D
 {
     [Export] public Movement movement;
     [Export] public Stars stars;
+
+    [Export] public AnimController animController;
 
     private bool _gettingDirectionInput;
 
@@ -50,12 +52,15 @@ public partial class PlayerNode : Node
         {
             //if there's no input this frame, stop movement.
             movement.StopMovement();
+            animController.PlayAnimByString("IdleAnim");
         }
         else
         {
-            movement.MoveInDirection(targetMovementVector);
+            movement.MoveInDirection(targetMovementVector.Normalized());
             _gettingDirectionInput = false;
-            //set false at the end of each pass,
+            //set false at the end of each pass
+
+            animController.PlayAnimByString("WalkAnim");
         }
 
     }
