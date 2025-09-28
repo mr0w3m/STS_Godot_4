@@ -9,7 +9,7 @@ public partial class AudioControllerS : Node
 {
     public static AudioControllerS instance;
 
-    private readonly List<AudioStreamPlayer3D> _audioSources = new();
+    private readonly List<AudioStreamPlayer> _audioSources = new();
 
     [Export] public PackedScene loopingAudioModule;
     private readonly List<LoopingAudioModule> _loopingAudios = new();
@@ -21,17 +21,17 @@ public partial class AudioControllerS : Node
 
         for (int i =0; i < 10; i++)
         {
-            AudioStreamPlayer3D player = new AudioStreamPlayer3D();
-            player.Finished += () => player.Visible = false;
+            AudioStreamPlayer player = new AudioStreamPlayer();
+            //player.Finished += () => player.Playing = false;
             _audioSources.Add(player);
             AddChild(player);
-            player.Visible = false;
+            //player.Visible = false;
         }
 	}
 
     public void PlayClip(AudioStream clip, float pitch = 1, float volume = 1, Vector3 pos = default)
     {
-        AudioStreamPlayer3D tempSource = _audioSources.FirstOrDefault(p => !p.Visible);
+        AudioStreamPlayer tempSource = _audioSources.FirstOrDefault(p => !p.Playing);
 
         
 
@@ -42,8 +42,8 @@ public partial class AudioControllerS : Node
         tempSource.Stream = clip;
         tempSource.VolumeDb = Mathf.LinearToDb(volume);
         tempSource.PitchScale = pitch;
-        tempSource.GlobalPosition = pos;
-        tempSource.Visible = true;
+        //tempSource.GlobalPosition = pos;
+        //tempSource.Visible = true;
         tempSource.Play();
     }
 

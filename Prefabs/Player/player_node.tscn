@@ -8,10 +8,10 @@
 [ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_yi70h"]
 [ext_resource type="SpriteFrames" uid="uid://crcb8l4oq4iut" path="res://Animations/Player/PlayerAnimator_SpriteFrames.tres" id="5_cqeso"]
 [ext_resource type="Script" uid="uid://ba52jyollp3b6" path="res://Scripts/Other/AnimController.cs" id="6_0jkn5"]
-[ext_resource type="Texture2D" uid="uid://nspqx14trs33" path="res://Sprites/TempSprites/Circle_32.png" id="6_vc4si"]
 [ext_resource type="Texture2D" uid="uid://jkir0f7r11rf" path="res://Sprites/StarFriends/StarBoi.png" id="7_l6di8"]
 [ext_resource type="Script" uid="uid://cvdsbfo0bcw80" path="res://Scripts/Player/Stars.cs" id="8_kjmbk"]
 [ext_resource type="PackedScene" uid="uid://cjbptn61pwa6x" path="res://Prefabs/Projectiles/Stars/StarProjectile_Rigidbody3D.tscn" id="9_a2cyr"]
+[ext_resource type="Texture2D" uid="uid://be8yce5elh3l8" path="res://Sprites/Environment/Untitled_Artwork(30).png" id="9_ti2d1"]
 [ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="10_c2ywu"]
 [ext_resource type="AudioStream" uid="uid://mnv5ik8j2a7w" path="res://Audio/SFX/StarAttack.mp3" id="11_l6di8"]
 [ext_resource type="Script" uid="uid://dmjhtduryblmc" path="res://Scripts/UI/UI_Health.cs" id="11_yi70h"]
@@ -24,7 +24,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6d61"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 1)
-albedo_texture = ExtResource("6_vc4si")
+albedo_texture = ExtResource("9_ti2d1")
 texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_irfb3"]
@@ -65,17 +65,15 @@ script = ExtResource("4_yi70h")
 _movement = NodePath("..")
 
 [node name="PrimaryAnimatedSprite3D" type="AnimatedSprite3D" parent="Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
-transform = Transform3D(-0.9999997, 0, -2.980232e-08, 0, 1, 0, 2.980232e-08, 0, -0.9999997, 0, 0.651, 0)
-pixel_size = 0.0005
+transform = Transform3D(-0.9999997, 0, -2.980232e-08, 0, 1, 0, 2.980232e-08, 0, -0.9999997, 0, 0.49002218, 0)
+pixel_size = 0.002
 sprite_frames = ExtResource("5_cqeso")
-animation = &"WalkAnim"
+animation = &"IdleAnim"
 autoplay = "IdleAnim"
-frame = 1
-frame_progress = 0.20468305
 script = ExtResource("6_0jkn5")
 
 [node name="PlayerGroundSprite" type="MeshInstance3D" parent="Player_RigidBody3D/SpriteParentAndDirectionFlipper"]
-transform = Transform3D(0.9452462, 0, 0, 0, -1.800432e-08, 0.9999995, 0, -0.41189086, -4.3711367e-08, -0.13179512, 0.0032370687, 0.0020656586)
+transform = Transform3D(0.6, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.011627505, -0.115)
 material_override = SubResource("StandardMaterial3D_x6d61")
 mesh = SubResource("QuadMesh_irfb3")
 skeleton = NodePath("../../../..")

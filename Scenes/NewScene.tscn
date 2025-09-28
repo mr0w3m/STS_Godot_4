@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://peuc1l04bpqn"]
+[gd_scene load_steps=33 format=3 uid="uid://peuc1l04bpqn"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dybft1q4bhtnl" path="res://PhysicsMaterials/PhysMat_Ground.tres" id="1_4pjek"]
 [ext_resource type="Shader" uid="uid://dr4y14yocycf5" path="res://Shaders/Triplanar.gdshader" id="2_irfb3"]
@@ -9,9 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://byrj0yon6o78f" path="res://Prefabs/EnvironmentObjects/Bushes/bush_002_node3d.tscn" id="7_u70w4"]
 [ext_resource type="PackedScene" uid="uid://dw3suc6b6xpr1" path="res://Prefabs/EnvironmentObjects/Bushes/bush_001_node3d.tscn" id="8_bex7o"]
 [ext_resource type="PackedScene" uid="uid://djd2w7lmw17bw" path="res://Prefabs/EnvironmentObjects/Foreground/treeSmall_foreground_001_node3d.tscn" id="8_n75rc"]
-[ext_resource type="Texture2D" uid="uid://depsgrqjm155i" path="res://Sprites/Environment/SkyMotherUI/Untitled_Artwork(24).png" id="9_irfb3"]
 [ext_resource type="Texture2D" uid="uid://vdk43esd51n3" path="res://Sprites/Environment/houses/House_01.png" id="9_ngt0p"]
-[ext_resource type="Texture2D" uid="uid://68kul3xc6ikf" path="res://Sprites/Environment/SkyMother/Untitled_Artwork(27).png" id="10_dnyai"]
 [ext_resource type="Texture2D" uid="uid://wo23it0akjjj" path="res://Sprites/Environment/houses/House_02.png" id="10_ixgti"]
 [ext_resource type="Texture2D" uid="uid://caefyihty4e60" path="res://Sprites/Environment/Temple/Untitled_Artwork(15).png" id="10_x6d61"]
 [ext_resource type="Texture2D" uid="uid://d1iwglm1fgq73" path="res://Sprites/Environment/Temple/Untitled_Artwork(16).png" id="11_dnyai"]
@@ -23,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://d24x73t2ml6j4" path="res://Prefabs/EnvironmentObjects/breakableCrate_staticbody3d.tscn" id="14_x6d61"]
 [ext_resource type="Texture2D" uid="uid://c7pkjqbcpufq3" path="res://Sprites/Environment/starssheet.png" id="15_dnyai"]
 [ext_resource type="Texture2D" uid="uid://b3pyl4xcx03mk" path="res://Sprites/Environment/bush n tree/Tree_01.png" id="16_bex7o"]
+[ext_resource type="Texture2D" uid="uid://c7uxbjqwx5h20" path="res://Sprites/Environment/SkyMotherUI/SkyMother_Sad.png" id="17_08i0l"]
 [ext_resource type="PackedScene" uid="uid://cyuicqoxwvn0m" path="res://Prefabs/Enemies/enemy_imp.tscn" id="24_pnlkv"]
 [ext_resource type="PackedScene" uid="uid://cegejk8jqba1m" path="res://Prefabs/Enemies/enemy_pile.tscn" id="25_08i0l"]
 [ext_resource type="PackedScene" uid="uid://mbh31xxwq62u" path="res://Prefabs/Enemies/enemy_pile_single.tscn" id="26_2c5j8"]
@@ -846,11 +845,7 @@ texture = ExtResource("10_ixgti")
 [node name="SkyMother_Sprite3D" type="Sprite3D" parent="Environment/Houses"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -15.470814, 1.6934003, 4.996914)
 pixel_size = 0.001
-texture = ExtResource("9_irfb3")
-
-[node name="SkyMother_Sprite3D2" type="Sprite3D" parent="Environment/Houses"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -14.32743, 3.328012, 4.996914)
-texture = ExtResource("10_dnyai")
+texture = ExtResource("17_08i0l")
 
 [node name="Temple_Sprite3D2" type="Sprite3D" parent="Environment/Houses"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -13.873003, 1.6934003, 5.0044646)

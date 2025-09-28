@@ -5,7 +5,7 @@ public partial class LoopingAudioModule : Node
 {
 	private AudioControllerS _audioController;
 
-	private AudioStreamPlayer3D _audioPlayer;
+	private AudioStreamPlayer2D _audioPlayer;
 	private Timer _timer;
 
 	private double _waitTime;
@@ -17,7 +17,7 @@ public partial class LoopingAudioModule : Node
 
     public override void _Ready()
     {
-		_audioPlayer = new AudioStreamPlayer3D();
+		_audioPlayer = new AudioStreamPlayer2D();
 		AddChild(_audioPlayer);
 
 		_timer = new Timer();
@@ -52,7 +52,7 @@ public partial class LoopingAudioModule : Node
 
 		float pitch = _randomPitch ? (float)GD.RandRange(0.9f, 1.05f) : 1f;
 
-		_audioController.PlayClip(_clip, pitch, _volume, _audioPlayer.GlobalPosition);
+		_audioController.PlayClip(_clip, pitch, _volume);
 
 		_timer.Start(_waitTime);
 	}

@@ -1,14 +1,17 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://crcb8l4oq4iut"]
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://crcb8l4oq4iut"]
 
-[ext_resource type="Texture2D" uid="uid://dsbdb6j2il41f" path="res://Sprites/Player/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png" id="1_aaf4h"]
-[ext_resource type="Texture2D" uid="uid://dx2fhkh7hpcqr" path="res://Sprites/Player/STS_Sprite_PlayerCharacter_BigEyes_WalkRight.png" id="2_v1ng8"]
+[ext_resource type="Texture2D" uid="uid://cu1o3itegjgre" path="res://Sprites/Player/NewPlayerAnims/Untitled_Artwork(33).png" id="2_3dmnf"]
+[ext_resource type="Texture2D" uid="uid://bjwvic75sq6t" path="res://Sprites/Player/NewPlayerAnims/Untitled_Artwork(34).png" id="3_wd54e"]
+[ext_resource type="Texture2D" uid="uid://h0e7jlkqpvtb" path="res://Sprites/Player/NewPlayerAnims/Untitled_Artwork(35).png" id="4_gmemx"]
+[ext_resource type="Texture2D" uid="uid://clf1he1f8tdsa" path="res://Sprites/Player/NewPlayerAnims/Untitled_Artwork(36).png" id="5_0oxmm"]
+[ext_resource type="Texture2D" uid="uid://dg0eta1p1rqir" path="res://Sprites/Player/NewPlayerAnims/Untitled_Artwork(38).png" id="6_g54u4"]
 
 [resource]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_aaf4h")
+"texture": ExtResource("2_3dmnf")
 }],
 "loop": true,
 "name": &"IdleAnim",
@@ -16,10 +19,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_aaf4h")
+"texture": ExtResource("2_3dmnf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_v1ng8")
+"texture": ExtResource("3_wd54e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gmemx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0oxmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g54u4")
 }],
 "loop": true,
 "name": &"WalkAnim",

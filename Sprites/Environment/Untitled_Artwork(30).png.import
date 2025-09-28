@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://depsgrqjm155i"
-path.s3tc="res://.godot/imported/Untitled_Artwork(24).png-cf793109a6e667aa62af812052d5d36c.s3tc.ctex"
+uid="uid://be8yce5elh3l8"
+path.s3tc="res://.godot/imported/Untitled_Artwork(30).png-8366f7500cca37cb3a97d0697e6e76bc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/Environment/SkyMotherUI/Untitled_Artwork(24).png"
-dest_files=["res://.godot/imported/Untitled_Artwork(24).png-cf793109a6e667aa62af812052d5d36c.s3tc.ctex"]
+source_file="res://Sprites/Environment/Untitled_Artwork(30).png"
+dest_files=["res://.godot/imported/Untitled_Artwork(30).png-8366f7500cca37cb3a97d0697e6e76bc.s3tc.ctex"]
 
 [params]
 
