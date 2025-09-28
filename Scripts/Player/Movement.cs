@@ -50,11 +50,16 @@ public partial class Movement : RigidBody3D
         base._PhysicsProcess(delta);
 
         this.SetAxisVelocity(_targetMovementVector * _moveSpeed * (float)delta);
-        Debug.Print(_targetMovementVector.ToString());
+        //Debug.Print(_targetMovementVector.ToString());
         
     }
     public void AddToVelocity(Vector3 direction)
     {
         _targetMovementVector += direction;
+    }
+
+    public void TeleportCharacter(Vector3 position)
+    {
+        this.GlobalPosition = position;
     }
 }

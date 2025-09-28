@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://peuc1l04bpqn"]
+[gd_scene load_steps=37 format=3 uid="uid://peuc1l04bpqn"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dybft1q4bhtnl" path="res://PhysicsMaterials/PhysMat_Ground.tres" id="1_4pjek"]
 [ext_resource type="Shader" uid="uid://dr4y14yocycf5" path="res://Shaders/Triplanar.gdshader" id="2_irfb3"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://cyuicqoxwvn0m" path="res://Prefabs/Enemies/enemy_imp.tscn" id="24_pnlkv"]
 [ext_resource type="PackedScene" uid="uid://cegejk8jqba1m" path="res://Prefabs/Enemies/enemy_pile.tscn" id="25_08i0l"]
 [ext_resource type="PackedScene" uid="uid://mbh31xxwq62u" path="res://Prefabs/Enemies/enemy_pile_single.tscn" id="26_2c5j8"]
+[ext_resource type="Script" uid="uid://xygrn7p6dsf7" path="res://Scripts/OneOff/Level1_TownTriggerSkyMom.cs" id="26_dq870"]
+[ext_resource type="Script" uid="uid://cqwhjddq36n6p" path="res://Scripts/Utility/CollisionChecker.cs" id="27_ekaq6"]
+[ext_resource type="Script" uid="uid://ci8jjvewx8h4o" path="res://Scripts/Checkpoints/Checkpoint.cs" id="28_ekaq6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnyai"]
 render_priority = 0
@@ -46,6 +49,9 @@ size = Vector3(40.767, 1.5, 1)
 albedo_texture = ExtResource("15_dnyai")
 
 [sub_resource type="QuadMesh" id="QuadMesh_e2oi3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwh46"]
+size = Vector3(1, 1, 4.285)
 
 [node name="NewScene" type="Node3D"]
 
@@ -892,10 +898,10 @@ transform = Transform3D(0.99701244, 0, 0.077241, 0, 1, 0, -0.077241, 0, 0.997012
 transform = Transform3D(0.9332235, 0, -0.35929653, 0, 1, 0, 0.35929653, 0, 0.9332235, 5.7978964, -4.7683716e-07, 1.9511312)
 
 [node name="BreakableCrate_StaticBody3D5" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
-transform = Transform3D(0.9917363, 0, 0.12829366, 0, 1, 0, -0.12829366, 0, 0.9917363, -4.240562, -4.7683716e-07, -0.35000503)
+transform = Transform3D(0.9917363, 0, 0.12829366, 0, 1, 0, -0.12829366, 0, 0.9917363, -3.7084153, -7.1525574e-07, 0.9298606)
 
 [node name="BreakableCrate_StaticBody3D6" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
-transform = Transform3D(0.961727, 0, -0.27400964, 0, 1, 0, 0.27400964, 0, 0.961727, -5.690511, 0.014513016, -0.40391052)
+transform = Transform3D(0.961727, 0, -0.27400964, 0, 1, 0, 0.27400964, 0, 0.961727, -5.7073793, 0.014512777, 0.9820734)
 
 [node name="BreakableCrate_StaticBody3D2" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(0.96033263, 0, 0.27885702, 0, 1, 0, -0.27885702, 0, 0.96033263, 15.48514, 0, 1.1318544)
@@ -905,9 +911,6 @@ transform = Transform3D(0.96661794, 0, -0.25622195, 0, 1, 0, 0.25622195, 0, 0.96
 
 [node name="BreakableCrate_StaticBody3D14" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(-0.94188756, 0, 0.33592847, 0, 1, 0, -0.33592847, 0, -0.94188756, -10.554052, 0.014513254, 2.6389976)
-
-[node name="BreakableCrate_StaticBody3D15" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
-transform = Transform3D(-0.9776881, 0, -0.21006215, 0, 1, 0, 0.21006215, 0, -0.9776881, -11.32101, 0.014512777, 1.7560548)
 
 [node name="BreakableCrate_StaticBody3D16" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(-0.9929779, 0, 0.11830011, 0, 1, 0, -0.11830011, 0, -0.9929779, -10.872939, 0.026964426, 0.21620047)
@@ -946,9 +949,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.531258, 0.21063423, 1.6360
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.12935, 0.21063423, 0.8746021)
 
 [node name="Enemy_Pile" parent="Enemies/Village" instance=ExtResource("25_08i0l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.194107, 0, 3.298)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.194107, 0, 0.8463242)
 
 [node name="Enemy_PileSingle" parent="Enemies/Village" instance=ExtResource("26_2c5j8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.60147, 0.120162785, 1.7600147)
 
 [node name="Forest" type="Node" parent="Enemies"]
+
+[node name="Level1_Town" type="Node" parent="."]
+
+[node name="CollisionListener_TalkToMother" type="Node" parent="Level1_Town" node_paths=PackedStringArray("_collisionChecker")]
+script = ExtResource("26_dq870")
+_collisionChecker = NodePath("Area3D")
+
+[node name="Area3D" type="Area3D" parent="Level1_Town/CollisionListener_TalkToMother"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.908591, 0, 1.8942542)
+script = ExtResource("27_ekaq6")
+_targetLayer = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1_Town/CollisionListener_TalkToMother/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.559, 0.505, -0.932)
+shape = SubResource("BoxShape3D_vwh46")
+
+[node name="CollisionListener_CheckPoint_1_Town" type="Node" parent="Level1_Town" node_paths=PackedStringArray("_collisionChecker", "_targetPosition")]
+script = ExtResource("28_ekaq6")
+_collisionChecker = NodePath("Area3D")
+_targetPosition = NodePath("Area3D/CheckpointPosition_Node3D")
+
+[node name="Area3D" type="Area3D" parent="Level1_Town/CollisionListener_CheckPoint_1_Town"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22882557, 0, 1.8942542)
+script = ExtResource("27_ekaq6")
+_targetLayer = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1_Town/CollisionListener_CheckPoint_1_Town/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5588932, 0.5047892, -0.9323664)
+shape = SubResource("BoxShape3D_vwh46")
+
+[node name="CheckpointPosition_Node3D" type="Node3D" parent="Level1_Town/CollisionListener_CheckPoint_1_Town/Area3D"]
+
+[node name="CollisionListener_CheckPoint_2_Forest" type="Node" parent="Level1_Town" node_paths=PackedStringArray("_collisionChecker", "_targetPosition")]
+script = ExtResource("28_ekaq6")
+_collisionChecker = NodePath("Area3D")
+_targetPosition = NodePath("Area3D/CheckpointPosition_Node3D")
+
+[node name="Area3D" type="Area3D" parent="Level1_Town/CollisionListener_CheckPoint_2_Forest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.550476, 0, 1.8942542)
+script = ExtResource("27_ekaq6")
+_targetLayer = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1_Town/CollisionListener_CheckPoint_2_Forest/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.559, 0.505, -0.932)
+shape = SubResource("BoxShape3D_vwh46")
+
+[node name="CheckpointPosition_Node3D" type="Node3D" parent="Level1_Town/CollisionListener_CheckPoint_2_Forest/Area3D"]

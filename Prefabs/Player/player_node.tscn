@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://qj8prtnly8lf"]
+[gd_scene load_steps=25 format=3 uid="uid://qj8prtnly8lf"]
 
 [ext_resource type="Script" uid="uid://ltx1plrrwijj" path="res://Scripts/Player/PlayerNode.cs" id="1_ydqg4"]
 [ext_resource type="AudioStream" uid="uid://b634ah23j0teo" path="res://Audio/SFX/WalkLoop1_1Step.mp3" id="2_a2cyr"]
@@ -17,9 +17,7 @@
 [ext_resource type="Script" uid="uid://dmjhtduryblmc" path="res://Scripts/UI/UI_Health.cs" id="11_yi70h"]
 [ext_resource type="PackedScene" uid="uid://cqhgipwu12yiq" path="res://Prefabs/UI/Health/ui_hp_texture_rect_prefab.tscn" id="12_7kaws"]
 [ext_resource type="Script" uid="uid://c22sl6uxuh6mw" path="res://Scripts/UI/PlayerDeathUI.cs" id="13_vc4si"]
-[ext_resource type="Script" uid="uid://cgqr64wit33cg" path="res://Scripts/Player/JumpStar.cs" id="15_c2ywu"]
 [ext_resource type="Script" uid="uid://ctaa2fhixinad" path="res://Scripts/UI/UI_ConvoView.cs" id="15_vc4si"]
-[ext_resource type="Script" uid="uid://cqwhjddq36n6p" path="res://Scripts/Utility/CollisionChecker.cs" id="16_ti2d1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6d61"]
 transparency = 1
@@ -38,16 +36,16 @@ albedo_texture = ExtResource("7_l6di8")
 [sub_resource type="QuadMesh" id="QuadMesh_ixgti"]
 material = SubResource("StandardMaterial3D_ngt0p")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_qj3on"]
-radius = 0.05
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2cyr"]
+radius = 0.3
+height = 1.0
 
-[node name="PlayerNode" type="Node3D" node_paths=PackedStringArray("movement", "stars", "health", "jump", "animController")]
+[node name="PlayerNode" type="Node3D" node_paths=PackedStringArray("movement", "stars", "health", "animController")]
 script = ExtResource("1_ydqg4")
 movement = NodePath("Player_RigidBody3D")
 stars = NodePath("Player_RigidBody3D/PlayerStars")
 health = NodePath("Player_RigidBody3D/PlayerHP")
 _walkingClip = ExtResource("2_a2cyr")
-jump = NodePath("Player_RigidBody3D/JumpStar")
 _playerHurtSFX = ExtResource("2_kjmbk")
 animController = NodePath("Player_RigidBody3D/SpriteParentAndDirectionFlipper/PrimaryAnimatedSprite3D")
 
@@ -116,17 +114,12 @@ _starClip = ExtResource("11_l6di8")
 script = ExtResource("10_c2ywu")
 _startingHP = 5
 
-[node name="JumpStar" type="Node" parent="Player_RigidBody3D" node_paths=PackedStringArray("_movement", "_groundedCheck")]
-script = ExtResource("15_c2ywu")
-_movement = NodePath("..")
-_groundedCheck = NodePath("../GroundedCheck_Area3D")
-_jumpSpeed = 10000.0
+[node name="PlayerTriggerCheckArea3D" type="Area3D" parent="Player_RigidBody3D" groups=["Player"]]
+collision_layer = 2
 
-[node name="GroundedCheck_Area3D" type="Area3D" parent="Player_RigidBody3D"]
-script = ExtResource("16_ti2d1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player_RigidBody3D/GroundedCheck_Area3D"]
-shape = SubResource("SphereShape3D_qj3on")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player_RigidBody3D/PlayerTriggerCheckArea3D" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_a2cyr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -183,6 +176,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Conversation_Control3" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("_speakerText", "_dialogueText")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

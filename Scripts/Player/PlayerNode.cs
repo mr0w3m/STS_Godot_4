@@ -8,11 +8,15 @@ public partial class PlayerNode : Node3D
     [Export] public Stars stars;
     [Export] public Health health;
     [Export] public AudioStream _walkingClip;
-    [Export] public JumpStar jump;
+    //[Export] public JumpStar jump;
 
     [Export] private AudioStream _playerHurtSFX;
 
     [Export] public AnimController animController;
+
+    private float _timeAfterDeath = 2f;
+    [Export] private float _deathTimer;
+    private bool _playerDead;
 
 
     private bool _gettingDirectionInput;
@@ -20,13 +24,33 @@ public partial class PlayerNode : Node3D
     public override void _Ready()
     {
         health.HPLost += TakeDamage;
+        health.Dead += PlayerDeath;
+        _deathTimer = _timeAfterDeath;
     }
 
 	public override void _Process(double delta)
 	{
         ReadMovementInput(delta);
-        ReadAttackInput();
+        
+        if (stars.HasStar("star1"))
+        {
+            ReadAttackInput();
+        }
         ReadJumpInput();
+
+
+        if (_playerDead)
+        {
+            if (_deathTimer > 0)
+            {
+                _deathTimer -= (float)delta;
+            }
+            else
+            {
+                AfterDeath();
+            }
+        }
+        
     }
 
     private void ReadMovementInput(double delta)
@@ -85,6 +109,29 @@ public partial class PlayerNode : Node3D
         AudioControllerS.instance.PlayClip(_playerHurtSFX);
     }
 
+    private void PlayerDeath()
+    {
+        //reset game state, based on game progress int
+        
+        //teleport to checkpoint
+        Debug.Print("Player Dead");
+        _deathTimer = _timeAfterDeath;
+        _playerDead = true;
+        //don't refresh level or enemies
+    }
+
+    private void AfterDeath()
+    {
+        Debug.Print("After Death");
+        
+        //refill HP
+        health.GainHP(5);
+        health.Revived();
+        movement.TeleportCharacter(CheckpointManager.instance.cachedPosition);
+        _playerDead = false;
+        _deathTimer = _timeAfterDeath;
+    }
+
     private void ReadAttackInput()
     {
         if (Input.IsActionPressed("mainAttack"))
@@ -97,7 +144,7 @@ public partial class PlayerNode : Node3D
     {
         if (Input.IsActionPressed("interactjump"))
         {
-            jump.Jump();
+            //jump.Jump();
         }
     }
 }

@@ -9,10 +9,15 @@ public partial class PlayerDeathUI : Control
     {
         base._Ready();
         _health.Dead += ShowDeathScreen;
+        _health.Revive += HideDeathScreen;
     }
 
     private void ShowDeathScreen()
     {
         this.Visible = true;
+    }
+    private void HideDeathScreen()
+    {
+        this.Visible = false;
     }
 }

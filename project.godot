@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Audiocontrollers="*res://Prefabs/Audio/audiocontrollers.tscn"
+CheckpointManager="*res://Prefabs/Checkpoints/checkpoint_manager.tscn"
 
 [dotnet]
 
@@ -70,3 +71,4 @@ interactjump={
 [layer_names]
 
 3d_physics/layer_1="Ground"
+3d_physics/layer_2="Player"

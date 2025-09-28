@@ -10,6 +10,8 @@ public partial class Stars : Node
 	[Export] private PackedScene _starProjectilePrefab; // replace this with from the data we load from a string through some database
 	private string _selectedStarAbility = "mini";
 
+	private List<string> _starAbilities = new();
+
 	[Export] private AudioStream _starClip;
 
     [Export] private float _timeBetweenAttacks = 0.2f;
@@ -33,6 +35,17 @@ public partial class Stars : Node
 		{
 			_canAttack = true;
 		}
+	}
+
+	public bool HasStar(string s)
+	{
+		return _starAbilities.Contains(s);
+	}
+
+	public void AddStar(string s)
+	{
+		Debug.Print("Added Star Ability: " + s);
+		_starAbilities.Add(s);
 	}
 
 	public void MainAttack()

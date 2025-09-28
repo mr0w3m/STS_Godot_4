@@ -21,6 +21,7 @@ public partial class Health : Node
 	public event Action HPLost;
 	public event Action HPGained;
 	public event Action Dead;
+	public event Action Revive;
 
 	private void OnHPChanged()
 	{
@@ -52,22 +53,43 @@ public partial class Health : Node
 			Dead.Invoke();
 		}
 	}
+    private void OnRevive()
+    {
+        if (Revive != null)
+        {
+            Revive.Invoke();
+        }
+    }
 
-	public override void _Ready()
+    public override void _Ready()
 	{
 		_currentHP = _startingHP;
 	}
 
+	public void Revived()
+	{
+		
+		OnRevive();
+        _dead = false;
+    }
 
 	public void GainHP(int amt)
 	{
 		_currentHP += amt;
+		if (_currentHP > _startingHP)
+		{
+			_currentHP = _startingHP;
+		}
 		OnHPChanged();
 		OnHPGained();
 	}
 
 	public void LoseHP(int amt)
 	{
+		if (_dead)
+		{
+			return;
+		}
 		_currentHP -= amt;
 		OnHPChanged();
 		OnHPLost();
