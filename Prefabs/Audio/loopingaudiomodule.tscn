@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct8sy50f1wn5w"]
+
+[ext_resource type="Script" uid="uid://co7qnymsejklk" path="res://Scripts/Audio/LoopingAudioModule.cs" id="1_qlfeq"]
+
+[node name="LoopingAudioModule" type="Node"]
+script = ExtResource("1_qlfeq")

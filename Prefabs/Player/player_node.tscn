@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://qj8prtnly8lf"]
+[gd_scene load_steps=24 format=3 uid="uid://qj8prtnly8lf"]
 
 [ext_resource type="Script" uid="uid://ltx1plrrwijj" path="res://Scripts/Player/PlayerNode.cs" id="1_ydqg4"]
+[ext_resource type="AudioStream" uid="uid://b634ah23j0teo" path="res://Audio/SFX/WalkLoop1_1Step.mp3" id="2_a2cyr"]
 [ext_resource type="PhysicsMaterial" uid="uid://6lx4cki5depb" path="res://PhysicsMaterials/PhysMat_Player.tres" id="2_cqeso"]
+[ext_resource type="AudioStream" uid="uid://cdvu4o54bonjm" path="res://Audio/SFX/PlayerHurt.mp3" id="2_kjmbk"]
 [ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="3_0jkn5"]
 [ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_yi70h"]
 [ext_resource type="SpriteFrames" uid="uid://crcb8l4oq4iut" path="res://Animations/Player/PlayerAnimator_SpriteFrames.tres" id="5_cqeso"]
@@ -11,9 +13,11 @@
 [ext_resource type="Script" uid="uid://cvdsbfo0bcw80" path="res://Scripts/Player/Stars.cs" id="8_kjmbk"]
 [ext_resource type="PackedScene" uid="uid://cjbptn61pwa6x" path="res://Prefabs/Projectiles/Stars/StarProjectile_Rigidbody3D.tscn" id="9_a2cyr"]
 [ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="10_c2ywu"]
+[ext_resource type="AudioStream" uid="uid://mnv5ik8j2a7w" path="res://Audio/SFX/StarAttack.mp3" id="11_l6di8"]
 [ext_resource type="Script" uid="uid://dmjhtduryblmc" path="res://Scripts/UI/UI_Health.cs" id="11_yi70h"]
 [ext_resource type="PackedScene" uid="uid://cqhgipwu12yiq" path="res://Prefabs/UI/Health/ui_hp_texture_rect_prefab.tscn" id="12_7kaws"]
 [ext_resource type="Script" uid="uid://c22sl6uxuh6mw" path="res://Scripts/UI/PlayerDeathUI.cs" id="13_vc4si"]
+[ext_resource type="Script" uid="uid://ctaa2fhixinad" path="res://Scripts/UI/UI_ConvoView.cs" id="15_vc4si"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6d61"]
 transparency = 1
@@ -32,10 +36,13 @@ albedo_texture = ExtResource("7_l6di8")
 [sub_resource type="QuadMesh" id="QuadMesh_ixgti"]
 material = SubResource("StandardMaterial3D_ngt0p")
 
-[node name="PlayerNode" type="Node3D" node_paths=PackedStringArray("movement", "stars", "animController")]
+[node name="PlayerNode" type="Node3D" node_paths=PackedStringArray("movement", "stars", "health", "animController")]
 script = ExtResource("1_ydqg4")
 movement = NodePath("Player_RigidBody3D")
 stars = NodePath("Player_RigidBody3D/PlayerStars")
+health = NodePath("Player_RigidBody3D/PlayerHP")
+_walkingClip = ExtResource("2_a2cyr")
+_playerHurtSFX = ExtResource("2_kjmbk")
 animController = NodePath("Player_RigidBody3D/SpriteParentAndDirectionFlipper/PrimaryAnimatedSprite3D")
 
 [node name="Player_RigidBody3D" type="RigidBody3D" parent="." groups=["Player"]]
@@ -99,6 +106,7 @@ mesh = SubResource("QuadMesh_ixgti")
 script = ExtResource("8_kjmbk")
 _projectileLaunchPos = NodePath("../SpriteParentAndDirectionFlipper/ProjectileSpawnTransform_Node3D")
 _starProjectilePrefab = ExtResource("9_a2cyr")
+_starClip = ExtResource("11_l6di8")
 
 [node name="PlayerHP" type="Node" parent="Player_RigidBody3D"]
 script = ExtResource("10_c2ywu")
@@ -158,13 +166,16 @@ text = "You Died!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Conversation_Control3" type="Control" parent="CanvasLayer"]
+[node name="Conversation_Control3" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("_speakerText", "_dialogueText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("15_vc4si")
+_speakerText = NodePath("Panel/Panel2/Speaker_RichTextLabel")
+_dialogueText = NodePath("Panel/Words_RichTextLabel")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Conversation_Control3"]
 layout_mode = 1

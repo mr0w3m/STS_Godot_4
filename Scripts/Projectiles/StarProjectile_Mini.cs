@@ -6,6 +6,8 @@ public partial class StarProjectile_Mini : RigidBody3D
 {
     [Export] private CollisionChecker _collisionChecker;
     [Export] private int _damage;
+    [Export] private AudioStream _starHitClip;
+    [Export] private AudioStream _starHitEnemyClip;
 
 
     private float _initialVelocity = 10f;
@@ -40,8 +42,16 @@ public partial class StarProjectile_Mini : RigidBody3D
             {
                 hp.LoseHP(_damage);
                 Debug.Print("Had HP!");
+                AudioControllerS.instance.PlayClip(_starHitEnemyClip, 1, 0.3f);
+            }
+            else
+            {
+                AudioControllerS.instance.PlayClip(_starHitClip, 1, 0.3f);
             }
         }
+
+
+
         //currently destroys on hit but we can expand this to do damage by passing through a node and get componenting it for a health class or enemy class
         this.QueueFree();
     }

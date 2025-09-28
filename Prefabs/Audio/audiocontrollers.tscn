@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dymey7hydvbxx"]
+
+[ext_resource type="Script" uid="uid://sr601ey72p06" path="res://Scripts/Audio/AudioControllerS.cs" id="1_cbllm"]
+[ext_resource type="PackedScene" uid="uid://ct8sy50f1wn5w" path="res://Prefabs/Audio/loopingaudiomodule.tscn" id="2_3vrbn"]
+
+[node name="AudioControllerS" type="Node"]
+script = ExtResource("1_cbllm")
+loopingAudioModule = ExtResource("2_3vrbn")

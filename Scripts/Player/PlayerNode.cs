@@ -6,10 +6,20 @@ public partial class PlayerNode : Node3D
 {
     [Export] public Movement movement;
     [Export] public Stars stars;
+    [Export] public Health health;
+    [Export] public AudioStream _walkingClip;
+
+    [Export] private AudioStream _playerHurtSFX;
 
     [Export] public AnimController animController;
 
+
     private bool _gettingDirectionInput;
+
+    public override void _Ready()
+    {
+        health.HPLost += TakeDamage;
+    }
 
 	public override void _Process(double delta)
 	{
@@ -53,6 +63,7 @@ public partial class PlayerNode : Node3D
             //if there's no input this frame, stop movement.
             movement.StopMovement();
             animController.PlayAnimByString("IdleAnim");
+            AudioControllerS.instance.StopLoopingAudio("walk");
         }
         else
         {
@@ -61,8 +72,15 @@ public partial class PlayerNode : Node3D
             //set false at the end of each pass
 
             animController.PlayAnimByString("WalkAnim");
+
+            AudioControllerS.instance.PlayLoopingAudio(_walkingClip, (float)_walkingClip.GetLength(), true, "walk", 0.3f);
         }
 
+    }
+
+    private void TakeDamage()
+    {
+        AudioControllerS.instance.PlayClip(_playerHurtSFX);
     }
 
     private void ReadAttackInput()

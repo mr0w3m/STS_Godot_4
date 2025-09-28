@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://d24x73t2ml6j4"]
+[gd_scene load_steps=7 format=3 uid="uid://d24x73t2ml6j4"]
 
 [ext_resource type="Script" uid="uid://dhgey5fboemhr" path="res://Scripts/Enemy/Enemy_Base.cs" id="1_iq5mu"]
 [ext_resource type="PhysicsMaterial" uid="uid://co1kjmk4yj37e" path="res://PhysicsMaterials/PhysMat_Generic.tres" id="2_7liau"]
 [ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="2_8a1jt"]
 [ext_resource type="Texture2D" uid="uid://diyrvij6ylhq5" path="res://Sprites/Environment/Barrels/Untitled_Artwork(29).png" id="2_a5ijf"]
+[ext_resource type="AudioStream" uid="uid://bvh2cn76qm3k8" path="res://Audio/SFX/Break_BoxBarrel.mp3" id="2_tv5ab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6d61"]
 
 [node name="BreakableCrate_StaticBody3D" type="Node3D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_iq5mu")
 health = NodePath("StaticBody3D/HP_Node")
+_deathSfx = ExtResource("2_tv5ab")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 physics_material_override = ExtResource("2_7liau")

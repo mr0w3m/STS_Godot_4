@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ConvoData" load_steps=2 format=3 uid="uid://bgo2y3jx2joor"]
+
+[ext_resource type="Script" uid="uid://dijxo2nlm6ya2" path="res://Scripts/Conversations/ConvoData.gd" id="1_3jdsc"]
+
+[resource]
+script = ExtResource("1_3jdsc")
+speaking_character = "Sky Mother"
+dialogue = "Welcome Child of the stars"

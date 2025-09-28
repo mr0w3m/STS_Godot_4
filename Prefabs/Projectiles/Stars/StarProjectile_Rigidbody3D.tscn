@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjbptn61pwa6x"]
+[gd_scene load_steps=9 format=3 uid="uid://cjbptn61pwa6x"]
 
 [ext_resource type="Script" uid="uid://d2tfnfgkh3cwf" path="res://Scripts/Projectiles/StarProjectile_Mini.cs" id="1_asgq2"]
+[ext_resource type="AudioStream" uid="uid://ce0t370wig2vq" path="res://Audio/SFX/StarHitsNothing.mp3" id="2_ebj2p"]
 [ext_resource type="Texture2D" uid="uid://jkir0f7r11rf" path="res://Sprites/StarFriends/StarBoi.png" id="2_osku4"]
 [ext_resource type="Script" uid="uid://cqwhjddq36n6p" path="res://Scripts/Utility/CollisionChecker.cs" id="3_osku4"]
+[ext_resource type="AudioStream" uid="uid://bbcgfng34c4ac" path="res://Audio/SFX/StarHitsEnemy.mp3" id="3_p4s00"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uao2k"]
 transparency = 1
@@ -20,6 +22,8 @@ radius = 0.25
 script = ExtResource("1_asgq2")
 _collisionChecker = NodePath("Area3D")
 _damage = 1
+_starHitClip = ExtResource("2_ebj2p")
+_starHitEnemyClip = ExtResource("3_p4s00")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

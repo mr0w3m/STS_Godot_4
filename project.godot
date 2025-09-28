@@ -15,6 +15,10 @@ run/main_scene="uid://peuc1l04bpqn"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Audiocontrollers="*res://Prefabs/Audio/audiocontrollers.tscn"
+
 [dotnet]
 
 project/assembly_name="SummonTheStars"

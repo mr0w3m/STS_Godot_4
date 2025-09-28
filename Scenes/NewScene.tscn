@@ -863,7 +863,7 @@ pixel_size = 0.001
 texture = ExtResource("11_dnyai")
 
 [node name="Temple_Sprite3D5" type="Sprite3D" parent="Environment/Houses"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -13.873003, 1.6934003, 4.9117227)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -13.872973, 1.6962422, 4.9115715)
 pixel_size = 0.001
 texture = ExtResource("12_2f7qp")
 
@@ -908,18 +908,13 @@ transform = Transform3D(0.96033263, 0, 0.27885702, 0, 1, 0, -0.27885702, 0, 0.96
 [node name="BreakableCrate_StaticBody3D3" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(0.96661794, 0, -0.25622195, 0, 1, 0, 0.25622195, 0, 0.96661794, 14.833284, 0, 2.1040983)
 
-[node name="AfterTalkParent[DisabledByDefault]" type="Node" parent="BreakableObjects"]
-
-[node name="StaticBody3D[DisabledByDefault]" type="StaticBody3D" parent="BreakableObjects/AfterTalkParent[DisabledByDefault]"]
-visible = false
-
-[node name="BreakableCrate_StaticBody3D7" parent="BreakableObjects/AfterTalkParent[DisabledByDefault]/StaticBody3D[DisabledByDefault]" instance=ExtResource("14_x6d61")]
+[node name="BreakableCrate_StaticBody3D14" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(-0.94188756, 0, 0.33592847, 0, 1, 0, -0.33592847, 0, -0.94188756, -10.554052, 0.014513254, 2.6389976)
 
-[node name="BreakableCrate_StaticBody3D8" parent="BreakableObjects/AfterTalkParent[DisabledByDefault]/StaticBody3D[DisabledByDefault]" instance=ExtResource("14_x6d61")]
+[node name="BreakableCrate_StaticBody3D15" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(-0.9776881, 0, -0.21006215, 0, 1, 0, 0.21006215, 0, -0.9776881, -11.32101, 0.014512777, 1.7560548)
 
-[node name="BreakableCrate_StaticBody3D9" parent="BreakableObjects/AfterTalkParent[DisabledByDefault]/StaticBody3D[DisabledByDefault]" instance=ExtResource("14_x6d61")]
+[node name="BreakableCrate_StaticBody3D16" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(-0.9929779, 0, 0.11830011, 0, 1, 0, -0.11830011, 0, -0.9929779, -10.872939, 0.026964426, 0.21620047)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -18,6 +18,8 @@ public partial class Health : Node
 	}
 
 	public event Action HPChanged;
+	public event Action HPLost;
+	public event Action HPGained;
 	public event Action Dead;
 
 	private void OnHPChanged()
@@ -27,8 +29,23 @@ public partial class Health : Node
 			HPChanged.Invoke();
 		}
 	}
+    private void OnHPLost()
+    {
+        if (HPLost != null)
+        {
+            HPLost.Invoke();
+        }
+    }
 
-	private void OnDead()
+    private void OnHPGained()
+    {
+        if (HPGained != null)
+        {
+            HPGained.Invoke();
+        }
+    }
+
+    private void OnDead()
 	{
 		if (Dead != null)
 		{
@@ -46,12 +63,14 @@ public partial class Health : Node
 	{
 		_currentHP += amt;
 		OnHPChanged();
+		OnHPGained();
 	}
 
 	public void LoseHP(int amt)
 	{
 		_currentHP -= amt;
 		OnHPChanged();
+		OnHPLost();
 
 		if (_currentHP <= 0)
 		{
