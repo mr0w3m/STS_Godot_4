@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://km5kfernh2aw"]
+
+[ext_resource type="Texture2D" uid="uid://jkir0f7r11rf" path="res://Sprites/StarFriends/StarBoi.png" id="1_qej0u"]
+
+[node name="Sprite3D_StarF_1" type="Sprite3D"]
+pixel_size = 0.0005
+texture = ExtResource("1_qej0u")

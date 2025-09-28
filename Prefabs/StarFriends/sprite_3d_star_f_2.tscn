@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgbcacvphyg7n"]
+
+[ext_resource type="Texture2D" uid="uid://delr2u2loj2ja" path="res://Sprites/StarFriends/StarMan.png" id="1_ifrdf"]
+
+[node name="Sprite3D_StarF_2" type="Sprite3D"]
+pixel_size = 0.0005
+texture = ExtResource("1_ifrdf")

@@ -8,11 +8,28 @@ public partial class Stars : Node
 	//[Export] private List<string> _starStrings;
 	[Export] private Node3D _projectileLaunchPos;
 	[Export] private PackedScene _starProjectilePrefab; // replace this with from the data we load from a string through some database
-	private string _selectedStarAbility = "mini";
+    [Export] private PackedScene _starFriend_star1;
+    [Export] private PackedScene _starFriend_star2;
+    [Export] private PackedScene _starFriend_star3;
+    [Export] private Node3D _starFriendPosition_star1;
+    [Export] private Node3D _starFriendPosition_star2;
+    [Export] private Node3D _starFriendPosition_star3;
+
+    private string _selectedStarAbility = "mini";
 
 	private List<string> _starAbilities = new();
 
 	[Export] private AudioStream _starClip;
+
+	public event Action newStarPower;
+
+	private void OnNewStarPower()
+	{
+		if (newStarPower != null)
+		{
+			newStarPower.Invoke();
+		}
+	}
 
     [Export] private float _timeBetweenAttacks = 0.2f;
     private float _attackTimer;
@@ -45,7 +62,11 @@ public partial class Stars : Node
 	public void AddStar(string s)
 	{
 		Debug.Print("Added Star Ability: " + s);
-		_starAbilities.Add(s);
+		OnNewStarPower();
+
+        _starAbilities.Add(s);
+
+		SpawnNewStarFriend(s);
 	}
 
 	public void MainAttack()
@@ -76,5 +97,24 @@ public partial class Stars : Node
 		{
 			starProj.Initialize();
 		}
+	}
+
+	private void SpawnNewStarFriend(string s)
+	{
+		if (s == "star1")
+		{
+			Node f = _starFriend_star1.Instantiate();
+			_starFriendPosition_star1.AddChild(f);
+		}
+		else if (s == "star2")
+		{
+            Node f = _starFriend_star2.Instantiate();
+            _starFriendPosition_star2.AddChild(f);
+        }
+		else if (s == "star3")
+		{
+            Node f = _starFriend_star3.Instantiate();
+            _starFriendPosition_star3.AddChild(f);
+        }
 	}
 }

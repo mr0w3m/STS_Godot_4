@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwipnjoinksxe"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://co1kjmk4yj37e" path="res://PhysicsMaterials/PhysMat_Generic.tres" id="1_vin6f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pnlkv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ekaq6"]
+
+[node name="LevelWall_StaticBody3D" type="StaticBody3D"]
+physics_material_override = ExtResource("1_vin6f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(16.367, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.74658203, 0)
+shape = SubResource("BoxShape3D_pnlkv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+visible = false
+mesh = SubResource("BoxMesh_ekaq6")

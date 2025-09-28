@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://qj8prtnly8lf"]
+[gd_scene load_steps=28 format=3 uid="uid://qj8prtnly8lf"]
 
 [ext_resource type="Script" uid="uid://ltx1plrrwijj" path="res://Scripts/Player/PlayerNode.cs" id="1_ydqg4"]
 [ext_resource type="AudioStream" uid="uid://b634ah23j0teo" path="res://Audio/SFX/WalkLoop1_1Step.mp3" id="2_a2cyr"]
@@ -15,9 +15,14 @@
 [ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="10_c2ywu"]
 [ext_resource type="AudioStream" uid="uid://mnv5ik8j2a7w" path="res://Audio/SFX/StarAttack.mp3" id="11_l6di8"]
 [ext_resource type="Script" uid="uid://dmjhtduryblmc" path="res://Scripts/UI/UI_Health.cs" id="11_yi70h"]
+[ext_resource type="PackedScene" uid="uid://km5kfernh2aw" path="res://Prefabs/StarFriends/sprite_3d_star_f_1.tscn" id="12_0t26k"]
 [ext_resource type="PackedScene" uid="uid://cqhgipwu12yiq" path="res://Prefabs/UI/Health/ui_hp_texture_rect_prefab.tscn" id="12_7kaws"]
+[ext_resource type="PackedScene" uid="uid://cgbcacvphyg7n" path="res://Prefabs/StarFriends/sprite_3d_star_f_2.tscn" id="13_uqmph"]
 [ext_resource type="Script" uid="uid://c22sl6uxuh6mw" path="res://Scripts/UI/PlayerDeathUI.cs" id="13_vc4si"]
+[ext_resource type="PackedScene" uid="uid://dngld4r2ei2je" path="res://Prefabs/StarFriends/sprite_3d_star_f_3.tscn" id="14_4viyg"]
 [ext_resource type="Script" uid="uid://ctaa2fhixinad" path="res://Scripts/UI/UI_ConvoView.cs" id="15_vc4si"]
+[ext_resource type="Texture2D" uid="uid://hjsx7f21kaje" path="res://Sprites/StarFriends/StarGotBackground.png" id="19_c2ywu"]
+[ext_resource type="Script" uid="uid://lwidph6jhrfk" path="res://Scripts/UI/NewStarPowerListener.cs" id="19_ti2d1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6d61"]
 transparency = 1
@@ -28,13 +33,6 @@ texture_filter = 0
 [sub_resource type="QuadMesh" id="QuadMesh_irfb3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8b7g"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngt0p"]
-transparency = 1
-albedo_texture = ExtResource("7_l6di8")
-
-[sub_resource type="QuadMesh" id="QuadMesh_ixgti"]
-material = SubResource("StandardMaterial3D_ngt0p")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2cyr"]
 radius = 0.3
@@ -100,14 +98,25 @@ fov = 60.0
 [node name="StarFriendParent" type="Node3D" parent="Player_RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5235833, 0.81331253, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player_RigidBody3D/StarFriendParent"]
-transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0.18148436, 0.5103493, 0.29154745)
-mesh = SubResource("QuadMesh_ixgti")
+[node name="StarFriend1ParentNode3D" type="Node3D" parent="Player_RigidBody3D/StarFriendParent"]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0.18148434, 0.5103493, 0.29154745)
 
-[node name="PlayerStars" type="Node3D" parent="Player_RigidBody3D" node_paths=PackedStringArray("_projectileLaunchPos")]
+[node name="StarFriend2ParentNode3D" type="Node3D" parent="Player_RigidBody3D/StarFriendParent"]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -0.58229923, 0.5103493, 0.29154733)
+
+[node name="StarFriend3ParentNode3D" type="Node3D" parent="Player_RigidBody3D/StarFriendParent"]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -0.17127502, 0.9637084, 0.29154742)
+
+[node name="PlayerStars" type="Node3D" parent="Player_RigidBody3D" node_paths=PackedStringArray("_projectileLaunchPos", "_starFriendPosition_star1", "_starFriendPosition_star2", "_starFriendPosition_star3")]
 script = ExtResource("8_kjmbk")
 _projectileLaunchPos = NodePath("../SpriteParentAndDirectionFlipper/ProjectileSpawnTransform_Node3D")
 _starProjectilePrefab = ExtResource("9_a2cyr")
+_starFriend_star1 = ExtResource("12_0t26k")
+_starFriend_star2 = ExtResource("13_uqmph")
+_starFriend_star3 = ExtResource("14_4viyg")
+_starFriendPosition_star1 = NodePath("../StarFriendParent/StarFriend1ParentNode3D")
+_starFriendPosition_star2 = NodePath("../StarFriendParent/StarFriend2ParentNode3D")
+_starFriendPosition_star3 = NodePath("../StarFriendParent/StarFriend3ParentNode3D")
 _starClip = ExtResource("11_l6di8")
 
 [node name="PlayerHP" type="Node" parent="Player_RigidBody3D"]
@@ -240,3 +249,64 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 28
 text = "Here's some text for conversation. It's important to be able to read this from afar."
 vertical_alignment = 1
+
+[node name="GetStarUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("_stars")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_ti2d1")
+_stars = NodePath("../../Player_RigidBody3D/PlayerStars")
+
+[node name="Words_RichTextLabel" type="RichTextLabel" parent="CanvasLayer/GetStarUI"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "You got a new Star Power!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/GetStarUI"]
+anchors_preset = 0
+offset_left = 476.0
+offset_top = 106.0
+offset_right = 516.0
+offset_bottom = 146.0
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GetStarUI/Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 180.0
+offset_bottom = 200.0
+grow_horizontal = 2
+texture = ExtResource("19_c2ywu")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GetStarUI"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 156.0
+offset_right = 50.0
+offset_bottom = 256.0
+grow_horizontal = 2
+texture = ExtResource("7_l6di8")
+expand_mode = 1

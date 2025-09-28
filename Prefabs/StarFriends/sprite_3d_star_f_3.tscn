@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dngld4r2ei2je"]
+
+[ext_resource type="Texture2D" uid="uid://c8bsb06xmfe7h" path="res://Sprites/StarFriends/StarBear.png" id="1_cla7k"]
+
+[node name="Sprite3D_StarF_3" type="Sprite3D"]
+pixel_size = 0.0005
+texture = ExtResource("1_cla7k")
