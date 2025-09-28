@@ -9,6 +9,8 @@ public partial class StarProjectile_Mini : RigidBody3D
     [Export] private AudioStream _starHitClip;
     [Export] private AudioStream _starHitEnemyClip;
 
+    [Export] private PackedScene _vfx;
+
 
     private float _initialVelocity = 10f;
     private float _acceleration = 5f;
@@ -35,7 +37,16 @@ public partial class StarProjectile_Mini : RigidBody3D
 
     private void HitTarget(Node3D body)
     {
-        foreach(Node n in body.GetChildren())
+        Node3D vfx = _vfx.Instantiate() as Node3D;
+        vfx.Position = this.GlobalPosition;
+        GetTree().Root.AddChild(vfx);
+        GpuParticles3D pfx = vfx as GpuParticles3D;
+        if (pfx != null)
+        {
+            pfx.Emitting = true;
+        }
+
+        foreach (Node n in body.GetChildren())
         {
             Health hp = n as Health;
             if (hp != null)

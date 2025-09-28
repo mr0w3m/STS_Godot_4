@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ycwfl8q2lkoi"]
+
+[ext_resource type="Texture2D" uid="uid://ddum1rwej3axo" path="res://Sprites/TempSprites/StarPower_Mini_Character.png" id="1_kpmiw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ev2k"]
+transparency = 1
+albedo_texture = ExtResource("1_kpmiw")
+texture_filter = 0
+billboard_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_65f7y"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+inherit_velocity_ratio = 0.272
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 3.25
+initial_velocity_max = 4.2
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.70200014
+
+[sub_resource type="QuadMesh" id="QuadMesh_coxja"]
+
+[node name="StarHitPFX" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_1ev2k")
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.17
+process_material = SubResource("ParticleProcessMaterial_65f7y")
+draw_pass_1 = SubResource("QuadMesh_coxja")

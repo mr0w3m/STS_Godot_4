@@ -22,10 +22,8 @@ public partial class AudioControllerS : Node
         for (int i =0; i < 10; i++)
         {
             AudioStreamPlayer player = new AudioStreamPlayer();
-            //player.Finished += () => player.Playing = false;
             _audioSources.Add(player);
             AddChild(player);
-            //player.Visible = false;
         }
 	}
 
@@ -37,7 +35,10 @@ public partial class AudioControllerS : Node
 
         if (tempSource == null)
         {
-            tempSource = _audioSources[0];
+            tempSource = new AudioStreamPlayer();
+            _audioSources.Add(tempSource);
+            AddChild(tempSource);
+            //player.Visible = false;
         }
         tempSource.Stream = clip;
         tempSource.VolumeDb = Mathf.LinearToDb(volume);
@@ -50,9 +51,10 @@ public partial class AudioControllerS : Node
 
     public void PlayLoopingAudio(AudioStream clip, float timeBetween, bool randomizePitch, string id, float volume)
     {
-
+        //Debug.Print("Play Looping Audio");
         if (IsTrackPlaying(id))
         {
+            //Debug.Print("Track is already Playing: " + id);
             return;
         }
 
@@ -68,6 +70,7 @@ public partial class AudioControllerS : Node
 
     public void StopLoopingAudio(string id)
     {
+        //Debug.Print("Stop Looping Audio");
         LoopingAudioModule module = _loopingAudios.FirstOrDefault(m => m.ID == id);
         
         if (module != null)

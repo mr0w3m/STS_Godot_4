@@ -5,6 +5,7 @@ using System.Diagnostics;
 public partial class PlayerNode : Node3D
 {
     [Export] public Movement movement;
+    //[Export] public NewMovement newMovement;
     [Export] public Stars stars;
     [Export] public Health health;
     [Export] public AudioStream _walkingClip;
