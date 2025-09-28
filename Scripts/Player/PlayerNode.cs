@@ -8,6 +8,7 @@ public partial class PlayerNode : Node3D
     [Export] public Stars stars;
     [Export] public Health health;
     [Export] public AudioStream _walkingClip;
+    [Export] public JumpStar jump;
 
     [Export] private AudioStream _playerHurtSFX;
 
@@ -25,6 +26,7 @@ public partial class PlayerNode : Node3D
 	{
         ReadMovementInput(delta);
         ReadAttackInput();
+        ReadJumpInput();
     }
 
     private void ReadMovementInput(double delta)
@@ -88,6 +90,14 @@ public partial class PlayerNode : Node3D
         if (Input.IsActionPressed("mainAttack"))
         {
             stars.MainAttack();
+        }
+    }
+
+    private void ReadJumpInput()
+    {
+        if (Input.IsActionPressed("interactjump"))
+        {
+            jump.Jump();
         }
     }
 }

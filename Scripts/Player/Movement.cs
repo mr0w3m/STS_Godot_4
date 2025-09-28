@@ -1,14 +1,17 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Movement : RigidBody3D
 {
     [Export]
     private float _moveSpeed;
+    
 
     private Direction _currentDirection;
 
     private Vector3 _targetMovementVector;
+    private Vector3 _targetJumpVector;
 
     public Direction currentDirection
     {
@@ -47,5 +50,11 @@ public partial class Movement : RigidBody3D
         base._PhysicsProcess(delta);
 
         this.SetAxisVelocity(_targetMovementVector * _moveSpeed * (float)delta);
+        Debug.Print(_targetMovementVector.ToString());
+        
+    }
+    public void AddToVelocity(Vector3 direction)
+    {
+        _targetMovementVector += direction;
     }
 }

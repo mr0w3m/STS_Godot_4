@@ -4,12 +4,28 @@ using System;
 [GlobalClass]
 public partial class ConvoManager : Node
 {
+    public static ConvoManager instance;
+
     [Export] private UI_ConvoView _view;
 
 	public event Action ConversationComplete;
 
     private Resource _convoData;
     private int _currentConversationStep;
+
+    public override void _Ready()
+    {
+        instance = this;
+    }
+
+    public override void _Process(double delta)
+    {
+        //check for A input
+        if (Input.IsActionPressed("interactjump"))
+        {
+            //if ()
+        }
+    }
 
 	private void OnConversationComplete()
 	{
@@ -23,6 +39,8 @@ public partial class ConvoManager : Node
     {
         _currentConversationStep = 0;
         _view.Show();
+
+
         /*
         if (Actor.i != null)
         {

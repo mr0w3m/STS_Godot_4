@@ -53,7 +53,7 @@ public partial class Stars : Node
 
 	private void FireMini()
 	{
-		AudioControllerS.instance.PlayClip(_starClip, (float)GD.RandRange(0.8f, 1.1f), 0.4f);
+		AudioControllerS.instance.PlayClip(_starClip, (float)GD.RandRange(0.8f, 1.1f), 0.1f);
 
 		Node3D projectileNode = (Node3D)_starProjectilePrefab.Instantiate();//spawn class
 		AddChild(projectileNode);//add to current scene
