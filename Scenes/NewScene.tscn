@@ -1543,6 +1543,16 @@ transform = Transform3D(-14.142138, 0, 14.142134, 0, 20, 0, -14.142134, 0, -14.1
 material_override = SubResource("StandardMaterial3D_2f7qp")
 mesh = SubResource("QuadMesh_e2oi3")
 
+[node name="StarBackdrop7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-14.142132, 0, -14.1421385, 0, 19.999998, 0, 14.1421385, 0, -14.142132, 69.77067, 8.283278, 35.339127)
+material_override = SubResource("StandardMaterial3D_2f7qp")
+mesh = SubResource("QuadMesh_e2oi3")
+
+[node name="StarBackdrop8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-14.142132, 0, -14.1421385, 0, 19.999998, 0, 14.1421385, 0, -14.142132, 83.39976, 8.283278, 21.71002)
+material_override = SubResource("StandardMaterial3D_2f7qp")
+mesh = SubResource("QuadMesh_e2oi3")
+
 [node name="StarBackdrop3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-20, 0, -3.019916e-06, 0, 20, 0, 3.019916e-06, 0, -20, 15.402283, 8.283279, 20.236273)
 material_override = SubResource("StandardMaterial3D_2f7qp")

@@ -20,7 +20,7 @@ public partial class StartGameMusicTrigger : Node
             {
                 AudioControllerS.instance.StopLoopingAudio("music");
             }
-            AudioControllerS.instance.PlayLoopingAudio(_musicTrackToPlay, (float)_musicTrackToPlay.GetLength(), false, "music", 1);
+            AudioControllerS.instance.PlayLoopingAudio(_musicTrackToPlay, (float)_musicTrackToPlay.GetLength(), false, "music", 0.5f);
         }
     }
 }
