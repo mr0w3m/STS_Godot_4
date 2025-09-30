@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyuicqoxwvn0m"]
+[gd_scene load_steps=13 format=3 uid="uid://cyuicqoxwvn0m"]
 
 [ext_resource type="Script" uid="uid://djsvxibseyheh" path="res://Scripts/Enemy/Enemy_Imp.cs" id="1_4bgo7"]
 [ext_resource type="PhysicsMaterial" uid="uid://6lx4cki5depb" path="res://PhysicsMaterials/PhysMat_Player.tres" id="2_6prir"]
+[ext_resource type="AudioStream" uid="uid://bhyna7biduwb8" path="res://Audio/SFX/EnemyDies.mp3" id="2_b2yh6"]
 [ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="3_b2yh6"]
 [ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_0yjq4"]
 [ext_resource type="Texture2D" uid="uid://c8hliljarq5lj" path="res://Sprites/Enemies/Enemy_Imp.png" id="5_w16oi"]
@@ -29,6 +30,7 @@ _attackDamage = 1
 _timeBetweenAttacks = 0.5
 health = NodePath("RigidBody3D/Imp_HP")
 _movement = NodePath("RigidBody3D")
+_deathSfx = ExtResource("2_b2yh6")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 axis_lock_angular_x = true

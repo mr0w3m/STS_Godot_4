@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsbdb6j2il41f"
 path.s3tc="res://.godot/imported/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png-0d183ec850fb66548763f7acdacd815c.s3tc.ctex"
+path.etc2="res://.godot/imported/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png-0d183ec850fb66548763f7acdacd815c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Player/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png"
-dest_files=["res://.godot/imported/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png-0d183ec850fb66548763f7acdacd815c.s3tc.ctex"]
+dest_files=["res://.godot/imported/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png-0d183ec850fb66548763f7acdacd815c.s3tc.ctex", "res://.godot/imported/STS_Sprite_PlayerCharacter_BigEyes_Cutout.png-0d183ec850fb66548763f7acdacd815c.etc2.ctex"]
 
 [params]
 

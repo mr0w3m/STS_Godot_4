@@ -53,11 +53,11 @@ public partial class StarProjectile_Mini : RigidBody3D
             {
                 hp.LoseHP(_damage);
                 Debug.Print("Had HP!");
-                AudioControllerS.instance.PlayClip(_starHitEnemyClip, 1, 0.1f);
+                AudioControllerS.instance.PlayClip(_starHitEnemyClip, 1, 0.2f);
             }
             else
             {
-                AudioControllerS.instance.PlayClip(_starHitClip, 1, 0.1f);
+                AudioControllerS.instance.PlayClip(_starHitClip, 1, 0.2f);
             }
         }
 

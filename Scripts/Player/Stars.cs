@@ -67,6 +67,11 @@ public partial class Stars : Node
         _starAbilities.Add(s);
 
 		SpawnNewStarFriend(s);
+
+		if (s == "star2")
+		{
+			_timeBetweenAttacks = _timeBetweenAttacks / 2;
+		}
 	}
 
 	public void MainAttack()

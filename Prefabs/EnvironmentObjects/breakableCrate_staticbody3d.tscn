@@ -4,7 +4,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://co1kjmk4yj37e" path="res://PhysicsMaterials/PhysMat_Generic.tres" id="2_7liau"]
 [ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="2_8a1jt"]
 [ext_resource type="Texture2D" uid="uid://diyrvij6ylhq5" path="res://Sprites/Environment/Barrels/Untitled_Artwork(29).png" id="2_a5ijf"]
-[ext_resource type="AudioStream" uid="uid://bvh2cn76qm3k8" path="res://Audio/SFX/Break_BoxBarrel.mp3" id="2_tv5ab"]
+[ext_resource type="AudioStream" uid="uid://bcb54rvbsg1xr" path="res://Audio/SFX/BreakCrate.mp3" id="2_tv5ab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6d61"]
 

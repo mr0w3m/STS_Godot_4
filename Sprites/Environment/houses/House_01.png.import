@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://vdk43esd51n3"
 path.s3tc="res://.godot/imported/House_01.png-ea0e673825c6e5461e53f1665faed5cc.s3tc.ctex"
+path.etc2="res://.godot/imported/House_01.png-ea0e673825c6e5461e53f1665faed5cc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Environment/houses/House_01.png"
-dest_files=["res://.godot/imported/House_01.png-ea0e673825c6e5461e53f1665faed5cc.s3tc.ctex"]
+dest_files=["res://.godot/imported/House_01.png-ea0e673825c6e5461e53f1665faed5cc.s3tc.ctex", "res://.godot/imported/House_01.png-ea0e673825c6e5461e53f1665faed5cc.etc2.ctex"]
 
 [params]
 

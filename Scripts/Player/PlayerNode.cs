@@ -100,14 +100,14 @@ public partial class PlayerNode : Node3D
 
             animController.PlayAnimByString("WalkAnim");
 
-            AudioControllerS.instance.PlayLoopingAudio(_walkingClip, (float)_walkingClip.GetLength(), true, "walk", 0.3f);
+            AudioControllerS.instance.PlayLoopingAudio(_walkingClip, (float)_walkingClip.GetLength() + 0.2f, true, "walk", 0.3f);
         }
 
     }
 
     private void TakeDamage()
     {
-        AudioControllerS.instance.PlayClip(_playerHurtSFX);
+        AudioControllerS.instance.PlayClip(_playerHurtSFX, (float)GD.RandRange(0.95f, 1.05f), 0.5f);
     }
 
     private void PlayerDeath()

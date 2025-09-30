@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://blf2ybmj8fc42"
 path.s3tc="res://.godot/imported/PileEnemy_Single.png-98b573385b2c243303773451c824b5db.s3tc.ctex"
+path.etc2="res://.godot/imported/PileEnemy_Single.png-98b573385b2c243303773451c824b5db.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Enemies/PileEnemy_Single.png"
-dest_files=["res://.godot/imported/PileEnemy_Single.png-98b573385b2c243303773451c824b5db.s3tc.ctex"]
+dest_files=["res://.godot/imported/PileEnemy_Single.png-98b573385b2c243303773451c824b5db.s3tc.ctex", "res://.godot/imported/PileEnemy_Single.png-98b573385b2c243303773451c824b5db.etc2.ctex"]
 
 [params]
 

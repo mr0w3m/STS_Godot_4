@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://be8yce5elh3l8"
 path.s3tc="res://.godot/imported/Untitled_Artwork(30).png-8366f7500cca37cb3a97d0697e6e76bc.s3tc.ctex"
+path.etc2="res://.godot/imported/Untitled_Artwork(30).png-8366f7500cca37cb3a97d0697e6e76bc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Environment/Untitled_Artwork(30).png"
-dest_files=["res://.godot/imported/Untitled_Artwork(30).png-8366f7500cca37cb3a97d0697e6e76bc.s3tc.ctex"]
+dest_files=["res://.godot/imported/Untitled_Artwork(30).png-8366f7500cca37cb3a97d0697e6e76bc.s3tc.ctex", "res://.godot/imported/Untitled_Artwork(30).png-8366f7500cca37cb3a97d0697e6e76bc.etc2.ctex"]
 
 [params]
 

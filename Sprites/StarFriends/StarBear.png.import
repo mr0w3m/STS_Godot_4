@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8bsb06xmfe7h"
 path.s3tc="res://.godot/imported/StarBear.png-b71cce9c4d05c46b1b5801a223dea72c.s3tc.ctex"
+path.etc2="res://.godot/imported/StarBear.png-b71cce9c4d05c46b1b5801a223dea72c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/StarFriends/StarBear.png"
-dest_files=["res://.godot/imported/StarBear.png-b71cce9c4d05c46b1b5801a223dea72c.s3tc.ctex"]
+dest_files=["res://.godot/imported/StarBear.png-b71cce9c4d05c46b1b5801a223dea72c.s3tc.ctex", "res://.godot/imported/StarBear.png-b71cce9c4d05c46b1b5801a223dea72c.etc2.ctex"]
 
 [params]
 

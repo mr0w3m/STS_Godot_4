@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cegejk8jqba1m"]
+[gd_scene load_steps=13 format=3 uid="uid://cegejk8jqba1m"]
 
 [ext_resource type="Script" uid="uid://msyt7ns4l2as" path="res://Scripts/Enemy/Enemy_Pile.cs" id="1_uivv6"]
 [ext_resource type="PackedScene" uid="uid://mbh31xxwq62u" path="res://Prefabs/Enemies/enemy_pile_single.tscn" id="2_3n1wk"]
 [ext_resource type="Texture2D" uid="uid://cp7k4pncdne2y" path="res://Sprites/Enemies/Enemy_Pile.png" id="2_n067c"]
 [ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="3_1ytoj"]
+[ext_resource type="AudioStream" uid="uid://bhyna7biduwb8" path="res://Audio/SFX/EnemyDies.mp3" id="3_3n1wk"]
 [ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="3_rgtgy"]
 [ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_krrga"]
 [ext_resource type="Script" uid="uid://cqwhjddq36n6p" path="res://Scripts/Utility/CollisionChecker.cs" id="6_x5a4x"]
@@ -28,6 +29,7 @@ _pileEnemySinglePrefab = ExtResource("2_3n1wk")
 _timeBetweenEnemySpawn = 2.0
 health = NodePath("Movement_RigidBody3D/PileHP")
 _movement = NodePath("Movement_RigidBody3D")
+_deathSfx = ExtResource("3_3n1wk")
 
 [node name="Movement_RigidBody3D" type="RigidBody3D" parent="." groups=["Enemy"]]
 axis_lock_angular_x = true

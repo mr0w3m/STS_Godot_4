@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3pyl4xcx03mk"
 path.s3tc="res://.godot/imported/Tree_01.png-03d9d551f9078c774dd8e3866931ddce.s3tc.ctex"
+path.etc2="res://.godot/imported/Tree_01.png-03d9d551f9078c774dd8e3866931ddce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Environment/bush n tree/Tree_01.png"
-dest_files=["res://.godot/imported/Tree_01.png-03d9d551f9078c774dd8e3866931ddce.s3tc.ctex"]
+dest_files=["res://.godot/imported/Tree_01.png-03d9d551f9078c774dd8e3866931ddce.s3tc.ctex", "res://.godot/imported/Tree_01.png-03d9d551f9078c774dd8e3866931ddce.etc2.ctex"]
 
 [params]
 

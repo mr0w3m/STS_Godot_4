@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://djj2p7rd1vlpl"]
+[gd_scene load_steps=14 format=3 uid="uid://djj2p7rd1vlpl"]
 
 [ext_resource type="Script" uid="uid://d2ytu4ykl5yn1" path="res://Scripts/Enemy/Enemy_Horse.cs" id="1_q8jlw"]
 [ext_resource type="PhysicsMaterial" uid="uid://6lx4cki5depb" path="res://PhysicsMaterials/PhysMat_Player.tres" id="2_gsqgy"]
+[ext_resource type="AudioStream" uid="uid://bhyna7biduwb8" path="res://Audio/SFX/EnemyDies.mp3" id="2_hmead"]
 [ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="3_hmead"]
 [ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_8f8y5"]
 [ext_resource type="Texture2D" uid="uid://bobwl0j5d6civ" path="res://Sprites/Enemies/Enemy_Horse.png" id="5_um02n"]
@@ -34,6 +35,7 @@ _chargeTimeSet = 1.0
 _chargeEndTimeSet = 0.5
 health = NodePath("RigidBody3D/Horse_HP")
 _movement = NodePath("RigidBody3D")
+_deathSfx = ExtResource("2_hmead")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 axis_lock_angular_x = true

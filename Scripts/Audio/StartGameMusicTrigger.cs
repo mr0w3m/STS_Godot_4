@@ -3,6 +3,7 @@ using System;
 
 public partial class StartGameMusicTrigger : Node
 {
+    
     [Export] private CollisionChecker _collisionChecker;
     [Export] private AudioStream _musicTrackToPlay;
 
@@ -20,7 +21,8 @@ public partial class StartGameMusicTrigger : Node
             {
                 AudioControllerS.instance.StopLoopingAudio("music");
             }
-            AudioControllerS.instance.PlayLoopingAudio(_musicTrackToPlay, (float)_musicTrackToPlay.GetLength(), false, "music", 0.5f);
+            AudioControllerS.instance.PlayLoopingAudio(_musicTrackToPlay, (float)_musicTrackToPlay.GetLength(), false, "music", 0.1f);
+            //QueueFree();
         }
     }
 }

@@ -52,7 +52,11 @@ public partial class LoopingAudioModule : Node
 
 		float pitch = _randomPitch ? (float)GD.RandRange(0.9f, 1.05f) : 1f;
 
-		_audioController.PlayClip(_clip, pitch, _volume);
+		//_audioController.PlayClip(_clip, pitch, _volume);
+		_audioPlayer.Stream = _clip;
+		_audioPlayer.VolumeDb = Mathf.LinearToDb(_volume);
+		_audioPlayer.PitchScale = pitch;
+		_audioPlayer.Play();
 
 		_timer.Start(_waitTime);
 	}

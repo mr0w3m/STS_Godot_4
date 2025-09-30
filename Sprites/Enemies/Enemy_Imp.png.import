@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8hliljarq5lj"
 path.s3tc="res://.godot/imported/Enemy_Imp.png-8acb65b4a69a80b91239fb61c0860cee.s3tc.ctex"
+path.etc2="res://.godot/imported/Enemy_Imp.png-8acb65b4a69a80b91239fb61c0860cee.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Enemies/Enemy_Imp.png"
-dest_files=["res://.godot/imported/Enemy_Imp.png-8acb65b4a69a80b91239fb61c0860cee.s3tc.ctex"]
+dest_files=["res://.godot/imported/Enemy_Imp.png-8acb65b4a69a80b91239fb61c0860cee.s3tc.ctex", "res://.godot/imported/Enemy_Imp.png-8acb65b4a69a80b91239fb61c0860cee.etc2.ctex"]
 
 [params]
 

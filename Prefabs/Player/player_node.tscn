@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ltx1plrrwijj" path="res://Scripts/Player/PlayerNode.cs" id="1_ydqg4"]
 [ext_resource type="AudioStream" uid="uid://b634ah23j0teo" path="res://Audio/SFX/WalkLoop1_1Step.mp3" id="2_a2cyr"]
 [ext_resource type="PhysicsMaterial" uid="uid://6lx4cki5depb" path="res://PhysicsMaterials/PhysMat_Player.tres" id="2_cqeso"]
-[ext_resource type="AudioStream" uid="uid://cdvu4o54bonjm" path="res://Audio/SFX/PlayerHurt.mp3" id="2_kjmbk"]
 [ext_resource type="Script" uid="uid://scx6ad6w24sk" path="res://Scripts/Player/Movement.cs" id="3_0jkn5"]
+[ext_resource type="AudioStream" uid="uid://bkbywxgu2mxf3" path="res://Audio/SFX/PlayerHit.mp3" id="3_0t26k"]
 [ext_resource type="Script" uid="uid://ccrbcuno5duxy" path="res://Scripts/Player/DirectionFlipper.cs" id="4_yi70h"]
 [ext_resource type="SpriteFrames" uid="uid://crcb8l4oq4iut" path="res://Animations/Player/PlayerAnimator_SpriteFrames.tres" id="5_cqeso"]
 [ext_resource type="Script" uid="uid://ba52jyollp3b6" path="res://Scripts/Other/AnimController.cs" id="6_0jkn5"]
@@ -13,13 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://cjbptn61pwa6x" path="res://Prefabs/Projectiles/Stars/StarProjectile_Rigidbody3D.tscn" id="9_a2cyr"]
 [ext_resource type="Texture2D" uid="uid://be8yce5elh3l8" path="res://Sprites/Environment/Untitled_Artwork(30).png" id="9_ti2d1"]
 [ext_resource type="Script" uid="uid://bkqyvqcelxbxo" path="res://Scripts/Player/Health.cs" id="10_c2ywu"]
-[ext_resource type="AudioStream" uid="uid://mnv5ik8j2a7w" path="res://Audio/SFX/StarAttack.mp3" id="11_l6di8"]
 [ext_resource type="Script" uid="uid://dmjhtduryblmc" path="res://Scripts/UI/UI_Health.cs" id="11_yi70h"]
 [ext_resource type="PackedScene" uid="uid://km5kfernh2aw" path="res://Prefabs/StarFriends/sprite_3d_star_f_1.tscn" id="12_0t26k"]
 [ext_resource type="PackedScene" uid="uid://cqhgipwu12yiq" path="res://Prefabs/UI/Health/ui_hp_texture_rect_prefab.tscn" id="12_7kaws"]
 [ext_resource type="PackedScene" uid="uid://cgbcacvphyg7n" path="res://Prefabs/StarFriends/sprite_3d_star_f_2.tscn" id="13_uqmph"]
 [ext_resource type="Script" uid="uid://c22sl6uxuh6mw" path="res://Scripts/UI/PlayerDeathUI.cs" id="13_vc4si"]
 [ext_resource type="PackedScene" uid="uid://dngld4r2ei2je" path="res://Prefabs/StarFriends/sprite_3d_star_f_3.tscn" id="14_4viyg"]
+[ext_resource type="AudioStream" uid="uid://di1lnxjgt8irc" path="res://Audio/SFX/StarFire.mp3" id="15_0t26k"]
 [ext_resource type="Script" uid="uid://ctaa2fhixinad" path="res://Scripts/UI/UI_ConvoView.cs" id="15_vc4si"]
 [ext_resource type="Texture2D" uid="uid://hjsx7f21kaje" path="res://Sprites/StarFriends/StarGotBackground.png" id="19_c2ywu"]
 [ext_resource type="Script" uid="uid://lwidph6jhrfk" path="res://Scripts/UI/NewStarPowerListener.cs" id="19_ti2d1"]
@@ -44,7 +44,7 @@ movement = NodePath("Player_RigidBody3D")
 stars = NodePath("Player_RigidBody3D/PlayerStars")
 health = NodePath("Player_RigidBody3D/PlayerHP")
 _walkingClip = ExtResource("2_a2cyr")
-_playerHurtSFX = ExtResource("2_kjmbk")
+_playerHurtSFX = ExtResource("3_0t26k")
 animController = NodePath("Player_RigidBody3D/SpriteParentAndDirectionFlipper/PrimaryAnimatedSprite3D")
 
 [node name="Player_RigidBody3D" type="RigidBody3D" parent="." groups=["Player"]]
@@ -117,7 +117,7 @@ _starFriend_star3 = ExtResource("14_4viyg")
 _starFriendPosition_star1 = NodePath("../StarFriendParent/StarFriend1ParentNode3D")
 _starFriendPosition_star2 = NodePath("../StarFriendParent/StarFriend2ParentNode3D")
 _starFriendPosition_star3 = NodePath("../StarFriendParent/StarFriend3ParentNode3D")
-_starClip = ExtResource("11_l6di8")
+_starClip = ExtResource("15_0t26k")
 
 [node name="PlayerHP" type="Node" parent="Player_RigidBody3D"]
 script = ExtResource("10_c2ywu")

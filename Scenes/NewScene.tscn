@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://peuc1l04bpqn"]
+[gd_scene load_steps=49 format=3 uid="uid://peuc1l04bpqn"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dybft1q4bhtnl" path="res://PhysicsMaterials/PhysMat_Ground.tres" id="1_4pjek"]
 [ext_resource type="Shader" uid="uid://dr4y14yocycf5" path="res://Shaders/Triplanar.gdshader" id="2_irfb3"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://cyrih7yfqsh54" path="res://Scripts/Audio/StartGameMusicTrigger.cs" id="29_qs84p"]
 [ext_resource type="PackedScene" uid="uid://cgbcacvphyg7n" path="res://Prefabs/StarFriends/sprite_3d_star_f_2.tscn" id="29_rgxgq"]
 [ext_resource type="AudioStream" uid="uid://btpmay0moypxq" path="res://Audio/TempMusicTracks/TownLoop_MASTER.mp3" id="30_a0r5m"]
+[ext_resource type="AudioStream" uid="uid://ccx3kla13crro" path="res://Audio/TempMusicTracks/Action_Loop_MASTER.mp3" id="32_lwf4h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnyai"]
 render_priority = 0
@@ -57,8 +58,11 @@ albedo_texture = ExtResource("15_dnyai")
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwf4h"]
 size = Vector3(4.4179688, 1, 7.0878906)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_coxja"]
+size = Vector3(33.82425, 1, 15.940552)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_vwh46"]
-size = Vector3(33.098633, 1, 5)
+size = Vector3(42.041016, 1, 33.515137)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4eded"]
 
@@ -107,7 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.58162, 0.74658203, 0)
 shape = SubResource("BoxShape3D_pnlkv")
 
 [node name="LevelWall_StaticBody3D" parent="Environment" instance=ExtResource("6_vwh46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.307187, -0.15692186, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.307187, -0.15692186, 3.3542366)
 
 [node name="LevelWall_StaticBody3D7" parent="Environment" instance=ExtResource("6_vwh46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.307187, -0.15692186, -1.5356131)
@@ -137,13 +141,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.692814, -0.15692186, -1.53
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -18.216177, -0.15692186, -1.0000004)
 
 [node name="LevelWall_StaticBody3D2" parent="Environment" instance=ExtResource("6_vwh46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.692813, -0.15692186, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.692813, -0.15692186, 3.3542366)
 
 [node name="LevelWall_StaticBody3D3" parent="Environment" instance=ExtResource("6_vwh46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.692814, -0.15692186, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.692814, -0.15692186, 3.3542366)
 
 [node name="LevelWall_StaticBody3D4" parent="Environment" instance=ExtResource("6_vwh46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.692814, -0.15692186, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.692814, -0.15692186, 3.3542366)
 
 [node name="LevelWall_StaticBody3D5" parent="Environment" instance=ExtResource("6_vwh46")]
 transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 40.441204, -0.15692186, 11.674444)
@@ -1462,7 +1466,7 @@ texture = ExtResource("12_2f7qp")
 [node name="BreakableObjects" type="Node" parent="."]
 
 [node name="BreakableCrate_StaticBody3D" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
-transform = Transform3D(0.99039155, 0, -0.13829166, 0, 1, 0, 0.13829166, 0, 0.99039155, 14.926803, 0, 0.10432723)
+transform = Transform3D(0.99039155, 0, -0.13829166, 0, 1, 0, 0.13829166, 0, 0.99039155, 14.926803, 0, -0.53862214)
 
 [node name="BreakableCrate_StaticBody3D7" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(0.99039155, 0, -0.13829166, 0, 1, 0, 0.13829166, 0, 0.99039155, 22.556046, 0, 0.4967514)
@@ -1504,7 +1508,7 @@ transform = Transform3D(0.9917363, 0, 0.12829366, 0, 1, 0, -0.12829366, 0, 0.991
 transform = Transform3D(0.961727, 0, -0.27400964, 0, 1, 0, 0.27400964, 0, 0.961727, -5.7073793, 0.014512777, 0.9820734)
 
 [node name="BreakableCrate_StaticBody3D2" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
-transform = Transform3D(0.96033263, 0, 0.27885702, 0, 1, 0, -0.27885702, 0, 0.96033263, 15.48514, 0, 1.1318544)
+transform = Transform3D(0.96033263, 0, 0.27885702, 0, 1, 0, -0.27885702, 0, 0.96033263, 15.48514, 0, 0.78516304)
 
 [node name="BreakableCrate_StaticBody3D3" parent="BreakableObjects" instance=ExtResource("14_x6d61")]
 transform = Transform3D(0.96661794, 0, -0.25622195, 0, 1, 0, 0.25622195, 0, 0.96661794, 14.833284, 0, 2.1040983)
@@ -1629,7 +1633,21 @@ script = ExtResource("27_ekaq6")
 _targetLayer = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level1_Town/CollisionListener_ChangeMusicTrack/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.559, 0.505, -0.932)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5823307, 0.505, 3.6510692)
+shape = SubResource("BoxShape3D_coxja")
+
+[node name="CollisionListener_ChangeMusicTrack2" type="Node" parent="Level1_Town" node_paths=PackedStringArray("_collisionChecker")]
+script = ExtResource("29_qs84p")
+_collisionChecker = NodePath("Area3D")
+_musicTrackToPlay = ExtResource("32_lwf4h")
+
+[node name="Area3D" type="Area3D" parent="Level1_Town/CollisionListener_ChangeMusicTrack2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.718315, 0, 1.8942542)
+script = ExtResource("27_ekaq6")
+_targetLayer = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1_Town/CollisionListener_ChangeMusicTrack2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0301895, 0.505, 13.325569)
 shape = SubResource("BoxShape3D_vwh46")
 
 [node name="CollisionListener_AcquireStar2" type="Node" parent="Level1_Town" node_paths=PackedStringArray("_collisionChecker")]

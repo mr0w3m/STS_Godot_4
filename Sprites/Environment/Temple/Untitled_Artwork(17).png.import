@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d23cj2bmk6pnx"
 path.s3tc="res://.godot/imported/Untitled_Artwork(17).png-a366589f65e8f4a08d7551ec507c67cd.s3tc.ctex"
+path.etc2="res://.godot/imported/Untitled_Artwork(17).png-a366589f65e8f4a08d7551ec507c67cd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Environment/Temple/Untitled_Artwork(17).png"
-dest_files=["res://.godot/imported/Untitled_Artwork(17).png-a366589f65e8f4a08d7551ec507c67cd.s3tc.ctex"]
+dest_files=["res://.godot/imported/Untitled_Artwork(17).png-a366589f65e8f4a08d7551ec507c67cd.s3tc.ctex", "res://.godot/imported/Untitled_Artwork(17).png-a366589f65e8f4a08d7551ec507c67cd.etc2.ctex"]
 
 [params]
 

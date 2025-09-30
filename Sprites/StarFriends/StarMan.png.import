@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://delr2u2loj2ja"
 path.s3tc="res://.godot/imported/StarMan.png-f8d26f9b66aa883ad0bf3d1fbe4edaa7.s3tc.ctex"
+path.etc2="res://.godot/imported/StarMan.png-f8d26f9b66aa883ad0bf3d1fbe4edaa7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/StarFriends/StarMan.png"
-dest_files=["res://.godot/imported/StarMan.png-f8d26f9b66aa883ad0bf3d1fbe4edaa7.s3tc.ctex"]
+dest_files=["res://.godot/imported/StarMan.png-f8d26f9b66aa883ad0bf3d1fbe4edaa7.s3tc.ctex", "res://.godot/imported/StarMan.png-f8d26f9b66aa883ad0bf3d1fbe4edaa7.etc2.ctex"]
 
 [params]
 

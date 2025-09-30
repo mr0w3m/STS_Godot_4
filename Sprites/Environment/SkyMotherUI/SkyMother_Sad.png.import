@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7uxbjqwx5h20"
 path.s3tc="res://.godot/imported/SkyMother_Sad.png-4106625021cd49d6ecbdd8cc10be8219.s3tc.ctex"
+path.etc2="res://.godot/imported/SkyMother_Sad.png-4106625021cd49d6ecbdd8cc10be8219.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Environment/SkyMotherUI/SkyMother_Sad.png"
-dest_files=["res://.godot/imported/SkyMother_Sad.png-4106625021cd49d6ecbdd8cc10be8219.s3tc.ctex"]
+dest_files=["res://.godot/imported/SkyMother_Sad.png-4106625021cd49d6ecbdd8cc10be8219.s3tc.ctex", "res://.godot/imported/SkyMother_Sad.png-4106625021cd49d6ecbdd8cc10be8219.etc2.ctex"]
 
 [params]
 

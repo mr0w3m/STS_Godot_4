@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ba4rt1hpevcue"
 path.s3tc="res://.godot/imported/TempHouse.png-5be718a1bcaf6be6641e4dc36787475d.s3tc.ctex"
+path.etc2="res://.godot/imported/TempHouse.png-5be718a1bcaf6be6641e4dc36787475d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/TempSprites/TempHouse.png"
-dest_files=["res://.godot/imported/TempHouse.png-5be718a1bcaf6be6641e4dc36787475d.s3tc.ctex"]
+dest_files=["res://.godot/imported/TempHouse.png-5be718a1bcaf6be6641e4dc36787475d.s3tc.ctex", "res://.godot/imported/TempHouse.png-5be718a1bcaf6be6641e4dc36787475d.etc2.ctex"]
 
 [params]
 

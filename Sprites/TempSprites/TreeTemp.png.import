@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ei6ekc1wowq5"
 path.s3tc="res://.godot/imported/TreeTemp.png-ae714e7e4e1844381ab81cd5fcba6647.s3tc.ctex"
+path.etc2="res://.godot/imported/TreeTemp.png-ae714e7e4e1844381ab81cd5fcba6647.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/TempSprites/TreeTemp.png"
-dest_files=["res://.godot/imported/TreeTemp.png-ae714e7e4e1844381ab81cd5fcba6647.s3tc.ctex"]
+dest_files=["res://.godot/imported/TreeTemp.png-ae714e7e4e1844381ab81cd5fcba6647.s3tc.ctex", "res://.godot/imported/TreeTemp.png-ae714e7e4e1844381ab81cd5fcba6647.etc2.ctex"]
 
 [params]
 
